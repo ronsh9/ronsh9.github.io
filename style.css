@@ -1,17 +1,17 @@
 body {
-    font-family: 'Rajdhani', sans-serif; /* Use the chosen font */
-    background-color: #ffffff; /* White background */
+    font-family: 'Rajdhani', sans-serif; /* Define font options here */
+    background-color: #ffffff; /* Currently set to white background */
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column; /* Allow the footer to be at the bottom */
     align-items: center; /* Center align items */
-    min-height: 100vh; /* Ensure the body takes the full height of the viewport */
+    min-height: 100vh; /* Ensure the body takes the full height of the viewport to avoid scrollin */
 }
 
 .container {
     display: flex;
-    flex-direction: column-reverse; /* Display left side at the bottom on smaller screens */
+    flex-direction: column-reverse; /* Display left side at the bottom on smaller screens for phone compatibility*/
     gap: 20px;
     max-width: 1200px;
     padding: 20px;
@@ -22,9 +22,9 @@ body {
 .left-side {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center align items */
-    text-align: center; /* Center text */
-    flex: 1; /* Make the left side take 1 part of the available space */
+    align-items: center;
+    text-align: center;
+    flex: 1;
 }
 
 .image-wrapper {
@@ -35,7 +35,7 @@ body {
     max-width: 300px; /* Adjust the max-width */
     width: 100%;
     vertical-align: top; /* Align top of image with top of text */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow below the image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add grid below the image */
 }
 
 .image-wrapper::before {
@@ -77,19 +77,19 @@ body {
 }
 
 .icon.scholar img:hover {
-    content: url('icons/googlescholar_hover.svg'); /* Change to hover image */
+    content: url('icons/googlescholar_hover.svg');
 }
 
 .icon.github img:hover {
-    content: url('icons/github_hover.svg'); /* Change to hover image */
+    content: url('icons/github_hover.svg');
 }
 
 .icon.linkedin img:hover {
-    content: url('icons/linkedin_hover.svg'); /* Change to hover image */
+    content: url('icons/linkedin_hover.svg');
 }
 
 .icon.x-twitter img:hover {
-    content: url('icons/x_hover.svg'); /* Change to hover image */
+    content: url('icons/x_hover.svg');
 }
 
 .right-side {
