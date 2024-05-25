@@ -6,12 +6,12 @@ body {
     display: flex;
     flex-direction: column; /* Allow the footer to be at the bottom */
     align-items: center; /* Center align items */
-    min-height: 100vh; /* Ensure the body takes the full height of the viewport to avoid scrollin */
+    min-height: 100vh; /* Ensure the body takes the full height of the viewport to avoid scrolling */
 }
 
 .container {
     display: flex;
-    flex-direction: column-reverse; /* Display left side at the bottom on smaller screens for phone compatibility*/
+    flex-direction: column-reverse; /* Display left side at the bottom on smaller screens for phone compatibility */
     gap: 20px;
     max-width: 1200px;
     padding: 20px;
@@ -151,5 +151,12 @@ a:hover {
 
     .footer-text {
         margin-top: 20px; /* Ensure footer is at the bottom */
+    }
+}
+
+@media (max-width: 767px) {
+    .right-side {
+        padding-left: 20px; /* Add padding to the left on smaller screens */
+        padding-right: 20px; /* Add padding to the right on smaller screens */
     }
 }
