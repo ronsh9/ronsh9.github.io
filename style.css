@@ -1,5 +1,5 @@
 body {
-    font-family: 'Courier New', Courier, monospace; /* Define font options here */
+    font-family: 'Nunito', sans-serif; /* Updated to Nunito */
     background-color: #ffffff; /* Currently set to white background */
     margin: 0;
     padding: 0;
@@ -108,9 +108,18 @@ body {
 .right-side {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Align the content to the start */
-    flex: 2; /* Make the right side take 2 parts of the available space */
-    padding-left: 40px; /* Add padding to the left of the text */
+    justify-content: flex-start;
+    flex: 2; 
+    padding-right: 40px; /* Keep padding-right */
+    padding-left: 0; /* Remove the padding-left */
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-top: 0;
+    margin-left: 0; /* Align with the text below */
+    padding-left: 0; /* Align with the text below */
 }
 
 h1 {
@@ -204,22 +213,23 @@ a:hover {
 
 @media (min-width: 768px) {
     .container {
-        flex-direction: row;
-        margin-top: 5vh; /* Adjust top margin on larger screens */
-    }
-
-    .left-side {
-        flex: 1;
-        align-items: center; /* Center align items */
+        flex-direction: row-reverse;
+        margin-top: 5vh;
     }
 
     .right-side {
-        flex: 2;
-        padding-left: 40px; /* Add padding to the left of the text */
+        flex: 1.5; /* Decrease flex to make the right side narrower */
+        padding-right: 20px; /* Reduce padding on the right */
+    }
+
+    .left-side {
+        flex: 1; /* Increase flex to make the left side wider */
+        padding-left: 10px; /* Decrease left padding to start text earlier */
+        padding-right: 40px; /* Add right padding to balance the content */
     }
 
     .footer-text {
-        margin-top: 20px; /* Ensure footer is at the bottom */
+        margin-top: 20px;
     }
 }
 
