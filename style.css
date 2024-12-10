@@ -26,8 +26,7 @@ body {
     align-items: center;
     text-align: center;
     flex: 1;
-    opacity: 0; /* Initially invisible */
-    animation: fadeIn 2s forwards; /* Fade-in animation */
+    opacity: 1; /* Make it fully visible immediately */
 }
 
 @keyframes fadeIn {
@@ -38,8 +37,8 @@ body {
 
 .image-wrapper {
     position: relative;
-    opacity: 0; /* Initially invisible */
-    animation: fadeIn 2s forwards 0.5s; /* Fade-in animation with delay */
+    opacity: 1; /* Initially invisible */
+    /* animation: fadeIn 2s forwards 0.5s; */
 }
 
 .profile-image {
@@ -49,7 +48,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add grid below the image */
 }
 
-.image-wrapper::before {
+/* .image-wrapper::before {
     content: '';
     position: absolute;
     top: 10px;
@@ -64,9 +63,10 @@ body {
         transparent 4px
     );
     z-index: -1;
-    opacity: 0; /* Initially invisible */
-    animation: fadeIn 2s forwards 0.5s; /* Fade-in animation with delay */
-}
+    opacity: 0; 
+    animation: fadeIn 2s forwards 0.5s; 
+} */
+
 
 .contact-info {
     margin-top: 20px;
