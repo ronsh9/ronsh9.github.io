@@ -1,68 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Ron Shprints</title>
     <meta charset="UTF-8">
-    <meta name="description" content="Ron Shprints personal website">
-    <meta name="keywords" content="Ron Shprints">
-    <meta name="author" content="Ron Shprints">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐤</text></svg>">
-    <link rel="stylesheet" type="text/css" href="style.css">
-
-    <!-- Preload profile image to avoid lagging-->
-    <link rel="preload" href="my_pfp.jpg" as="image">
 </head>
-
 <body>
-    <div class="container">
-        <div class="left-side">
-            <div class="image-wrapper">
-                <img src="my_pfp.jpg" alt="Ron Shprints" class="profile-image" loading="eager">
+    <!-- Navigation Toolbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-logo"></a>
+            <ul class="navbar-menu">
+                <li><a href="https://ronsh9.github.io/index.html">About</a></li>
+                <li><a href="https://ronsh9.github.io/research/research.html">Research</a></li>
+                <li><a href="https://ronsh9.github.io/importNN/">Blog</a></li>
+            </ul>
+            <button class="navbar-toggle" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+
+        <div id="progress-bar"></div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Two-column Layout -->
+        <div class="content">
+            <div class="text-column">
+                <h1>Ron Shprints</h1>
+                <p class="intro">I'm a senior at <a href="https://www.mit.edu/" target="_blank" class="highlight">MIT</a> studying <a href="https://math.mit.edu/" target="_blank" class="highlight">mathematics</a> and <a href="https://www.eecs.mit.edu/" target="_blank" class="highlight">computer science</a>.
+                    My goal is to develop world models that can understand the physical world beyond human-level intelligence in a scalable and principled manner. Ultimately, I aim to use these world models to augment our capabilities across many disciplines. This involves deploying agents that can:
+                    <br>
+                    <span class="triangle-emoji"></span> Learn from unlabeled high-bandwith signals.
+                    <br>
+                    <span class="triangle-emoji"></span> Reason about and interact with their environment.
+                    <br>
+                    <span class="triangle-emoji"></span> Discover or process new information that's observed dynamically.
+                </p>
             </div>
-            <p class="contact-info">Email: ronsh [at] mit [dot] edu</p>
-            <div class="social-icons">
-                <a href="https://scholar.google.com/citations?user=xGMLzr4AAAAJ&hl=en" target="_blank" class="icon scholar">
-                    <img src="icons/googlescholar_colored.svg" alt="Google Scholar">
-                </a>
-                <a href="https://github.com/ronsh9" target="_blank" class="icon github">
-                    <img src="icons/github_colored.svg" alt="GitHub">
-                </a>
-                <a href="https://www.linkedin.com/in/ronshprints/" target="_blank" class="icon linkedin">
-                    <img src="icons/linkedin_colored.svg" alt="LinkedIn">
-                </a>
-                <a href="https://x.com/RShprints" target="_blank" class="icon x-twitter">
-                    <img src="icons/x_colored.svg" alt="X (Twitter)">
-                </a>
+            
+            <div class="image-column">
+                <img src="my_pfp.jpg" alt="Ron Shprints" class="profile-image">
+                <p class="contact-info">Email: ronsh [at] mit [dot] edu</p>
+                <div class="social-icons">
+                    <a href="https://scholar.google.com/citations?user=xGMLzr4AAAAJ&hl=en" target="_blank" class="icon scholar">
+                        <img src="icons/googlescholar_colored.svg" alt="Google Scholar">
+                    </a>
+                    <a href="https://github.com/ronsh9" target="_blank" class="icon github">
+                        <img src="icons/github_colored.svg" alt="GitHub">
+                    </a>
+                    <a href="https://www.linkedin.com/in/ronshprints/" target="_blank" class="icon linkedin">
+                        <img src="icons/linkedin_colored.svg" alt="LinkedIn">
+                    </a>
+                    <a href="https://x.com/RShprints" target="_blank" class="icon x-twitter">
+                        <img src="icons/x_colored.svg" alt="X (Twitter)">
+                    </a>
+                </div>
             </div>
         </div>
 
-        <div class="right-side">
-            <h1>Ron Shprints</h1>
-            <div class="nav-boxes">
-                <a href="research/research.html" class="nav-title">Research</a>
-                <span class="separator">|</span>
-                <a href="https://ronsh9.github.io/importNN/" class="nav-title">Blog</a>
-            </div>
-            <p class="intro">I'm a senior at <a href="https://www.mit.edu/" target="_blank" class="highlight">MIT</a> studying <a href="https://math.mit.edu/" target="_blank" class="highlight">mathematics</a> and <a href="https://www.eecs.mit.edu/" target="_blank" class="highlight">computer science</a>.
-                My goal is to develop world models that can understand the physical world beyond human-level intelligence in a scalable and principled manner. Ultimately, I aim to use these world models to augment our capabilities across many disciplines. This involves deploying agents that can:
-                <br>
-                <span class="triangle-emoji"></span> Learn from unlabeled high-bandwith signals.
-                <br>
-                <span class="triangle-emoji"></span> Reason about and interact with their environment.
-                <br>
-                <span class="triangle-emoji"></span> Discover or process new information that's observed dynamically.
-            </p>
-
-            <p class="intro"> In my free time I enjoy swimming 🏊 and playing strategic games (like chess ♞). I'm also interested in education and teaching 🧑‍🎓.
+        <!-- Single-column Layout Below -->
+        <div class="additional-content">
+            <h2>More About Me</h2>
+            <p>
+                In my free time, I enjoy swimming 🏊 and playing strategic games like chess ♞. 
+                I'm also passionate about education and teaching 🧑‍🎓.
             </p>
         </div>
     </div>
 
-    <p class="footer-text">Copyright © Ron Shprints</p>
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">Copyright © Ron Shprints</p>
+    </footer>
+
+    <!-- Script for Menu Toggle -->
+    <script src="script.js"></script>
+
 </body>
 </html>
