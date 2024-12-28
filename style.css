@@ -317,20 +317,16 @@ footer {
     vertical-align: middle; /* Align with the text */
 }
 
-
-.custom-bullet-container {
-    margin-left: 20px;
-    padding: 0;
-}
-
-/* Individual bullet items */
-.custom-bullet-item {
-    display: list-item; /* Align bullet and text */
-    align-items: baseline; /* Align circle with first line of text */
-    margin-bottom: 10px; /* Space between items */
-    position: relative; /* Enable positioning for custom bullet */
-    line-height: 1.6; /* Consistent line height for multiline text */
-    font-size: 1.2em; /* Adjust font size */
+.circle-emoji {
+    display: inline-block;
+    width: 5px; /* Diameter of the circle */
+    height: 5px; /* Diameter of the circle */
+    border: 2px solid #1111ac; /* Border color and thickness */
+    border-radius: 50%; /* Make it a circle */
+    vertical-align: middle; /* Align vertically */
+    position: relative; /* For fine-tuning */
+    top: -0.15em; /* Adjust to center perfectly */
+    background-color: transparent; /* Ensure the center is hollow */
 }
 
 
