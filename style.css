@@ -9,7 +9,6 @@ body {
 
 a {
     text-decoration: none;
-    color: #007BFF;
 }
 
 a:hover {
@@ -57,7 +56,7 @@ a:hover {
 }
 
 .navbar-menu a {
-    color: #333;
+    color: #000000;
     font-size: 1.2em;
     font-weight: 300;
     padding: 5px 10px;
@@ -106,9 +105,10 @@ a:hover {
     left: 0;
     height: 2px; /* Height of the progress bar */
     width: 0%; /* Initial width */
-    background: linear-gradient(to right, #007BFF, #007BFF); /* Colorful gradient */
+    background: linear-gradient(to right, #000066, #000066); /* Colorful gradient */
     z-index: 1001; /* Ensure it's above all other content */
 }
+
 
 
 
@@ -160,6 +160,7 @@ a:hover {
     margin-bottom: 10px; /* Add spacing below the title */
     color: #000000; /* Ensure consistent color */
     text-align: left;
+    margin-top: 0px;
 }
 
 .intro {
@@ -267,19 +268,19 @@ a:hover {
 }
 
 .icon.scholar img:hover {
-    content: url('icons/googlescholar_hover.svg'); /* Change image on hover */
+    content: url('icons/googlescholar_colored.svg'); /* Change image on hover */
 }
 
 .icon.github img:hover {
-    content: url('icons/github_hover.svg'); /* Change image on hover */
+    content: url('icons/github_colored.svg'); /* Change image on hover */
 }
 
 .icon.linkedin img:hover {
-    content: url('icons/linkedin_hover.svg'); /* Change image on hover */
+    content: url('icons/linkedin_colored.svg'); /* Change image on hover */
 }
 
 .icon.x-twitter img:hover {
-    content: url('icons/x_hover.svg'); /* Change image on hover */
+    content: url('icons/x_colored.svg'); /* Change image on hover */
 }
 
 
@@ -316,7 +317,24 @@ footer {
     vertical-align: middle; /* Align with the text */
 }
 
+
+.custom-bullet-container {
+    margin-left: 20px;
+    padding: 0;
+}
+
+/* Individual bullet items */
+.custom-bullet-item {
+    display: list-item; /* Align bullet and text */
+    align-items: baseline; /* Align circle with first line of text */
+    margin-bottom: 10px; /* Space between items */
+    position: relative; /* Enable positioning for custom bullet */
+    line-height: 1.6; /* Consistent line height for multiline text */
+    font-size: 1.2em; /* Adjust font size */
+}
+
+
 .highlight {
-    color: #007BFF; /* Shiny blue for highlighted text */
+    color: #1111ac; /* Shiny blue for highlighted text */
     font-weight: bold; /* Bold highlighted text */
 }

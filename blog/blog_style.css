@@ -57,7 +57,7 @@ a:hover {
 }
 
 .navbar-menu a {
-    color: #333;
+    color: #000000;
     font-size: 1.2em;
     font-weight: 300;
     padding: 5px 10px;
@@ -106,7 +106,7 @@ a:hover {
     left: 0;
     height: 2px; /* Height of the progress bar */
     width: 0%; /* Initial width */
-    background: linear-gradient(to right, #007BFF, #007BFF); /* Colorful gradient */
+    background: linear-gradient(to right, #000066, #000066); /* Colorful gradient */
     z-index: 1001; /* Ensure it's above all other content */
 }
 
@@ -245,7 +245,7 @@ footer {
 }
 
 .highlight {
-    color: #007BFF; /* Shiny blue for highlighted text */
+    color: #1111ac; /* Shiny blue for highlighted text */
     font-weight: bold; /* Bold highlighted text */
 }
 
