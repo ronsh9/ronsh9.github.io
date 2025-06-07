@@ -2859,106 +2859,74 @@ body.nav-closed .site-wrapper {
 }
 
 /* ==========================================================================
-   Elegant Link Styling
+   Elegant Link Styling - Fixed for Multi-line Text
    ========================================================================== */
 
-   .post-content a:not(.navbar-brand),
-   .page-content a:not(.navbar-brand),
-   .post-excerpt a:not(.navbar-brand),
-   .about-content a:not(.navbar-brand),
-   .content a:not(.navbar-brand),
-   p a:not(.navbar-brand),
-   li a:not(.navbar-brand):not(.nav > li > a),
-   h1 a:not(.navbar-brand),
-   h2 a:not(.navbar-brand),
-   h3 a:not(.navbar-brand),
-   h4 a:not(.navbar-brand),
-   h5 a:not(.navbar-brand),
-   h6 a:not(.navbar-brand) {
-       color: #666666 !important; /* Slightly gray text */
-       text-decoration: none !important;
-       position: relative;
-       background-image: none !important;
-       border-bottom: none !important;
-       transition: color 0.4s ease 0.2s; /* Color change delayed after underline disappears */
-   }
-   
-   .post-content a:not(.navbar-brand)::after,
-   .page-content a:not(.navbar-brand)::after,
-   .post-excerpt a:not(.navbar-brand)::after,
-   .about-content a:not(.navbar-brand)::after,
-   .content a:not(.navbar-brand)::after,
-   p a:not(.navbar-brand)::after,
-   li a:not(.navbar-brand):not(.nav > li > a)::after,
-   h1 a:not(.navbar-brand)::after,
-   h2 a:not(.navbar-brand)::after,
-   h3 a:not(.navbar-brand)::after,
-   h4 a:not(.navbar-brand)::after,
-   h5 a:not(.navbar-brand)::after,
-   h6 a:not(.navbar-brand)::after {
-       content: '';
-       position: absolute;
-       bottom: -2px;
-       left: 0;
-       right: 0;
-       height: 2px; /* Consistent thickness */
-       background: #ff8866; /* Solid light orange */
-       border-radius: 50px; /* Creates circular ends */
-       transform: scaleX(1); /* Initially visible */
-       transform-origin: center;
-       transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Cool bounce effect */
-   }
-   
-   .post-content a:not(.navbar-brand):hover::after,
-   .page-content a:not(.navbar-brand):hover::after,
-   .post-excerpt a:not(.navbar-brand):hover::after,
-   .about-content a:not(.navbar-brand):hover::after,
-   .content a:not(.navbar-brand):hover::after,
-   p a:not(.navbar-brand):hover::after,
-   li a:not(.navbar-brand):not(.nav > li > a):hover::after,
-   h1 a:not(.navbar-brand):hover::after,
-   h2 a:not(.navbar-brand):hover::after,
-   h3 a:not(.navbar-brand):hover::after,
-   h4 a:not(.navbar-brand):hover::after,
-   h5 a:not(.navbar-brand):hover::after,
-   h6 a:not(.navbar-brand):hover::after {
-       transform: scaleX(0); /* Underline disappears on hover */
-   }
-   
-   .post-content a:not(.navbar-brand):hover,
-   .page-content a:not(.navbar-brand):hover,
-   .post-excerpt a:not(.navbar-brand):hover,
-   .about-content a:not(.navbar-brand):hover,
-   .content a:not(.navbar-brand):hover,
-   p a:not(.navbar-brand):hover,
-   li a:not(.navbar-brand):not(.nav > li > a):hover,
-   h1 a:not(.navbar-brand):hover,
-   h2 a:not(.navbar-brand):hover,
-   h3 a:not(.navbar-brand):hover,
-   h4 a:not(.navbar-brand):hover,
-   h5 a:not(.navbar-brand):hover,
-   h6 a:not(.navbar-brand):hover {
-       color: #f05f40 !important; /* Orange color on hover (matches navbar brand) */
-   }
-   
-   /* Ensure navigation and footer links keep their original styling */
-   #mainNav a,
-   .site-footer a {
-       color: inherit !important;
-   }
-   
-   #mainNav a::after,
-   .site-footer a::after {
-       display: none !important;
-   }
-   
-   /* Explicitly ensure navbar brand stays orange */
-   #mainNav .navbar-brand {
-       color: #f05f40 !important;
-   }
-   
-   #mainNav .navbar-brand:hover,
-   #mainNav .navbar-brand:focus {
-       color: #eb3812 !important;
-   }
+.post-content a:not(.navbar-brand),
+.page-content a:not(.navbar-brand),
+.post-excerpt a:not(.navbar-brand),
+.about-content a:not(.navbar-brand),
+.content a:not(.navbar-brand),
+p a:not(.navbar-brand),
+li a:not(.navbar-brand):not(.nav > li > a) {
+    color: #666666 !important; /* Slightly gray text */
+    text-decoration: none !important;
+    position: relative;
+    background-image: linear-gradient(to right, #ff8866 0%, #ff8866 100%) !important;
+    background-size: 100% 2px !important;
+    background-position: 0 100% !important;
+    background-repeat: no-repeat !important;
+    border-bottom: none !important;
+    transition: color 0.4s ease 0.2s, background-size 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+    /* Remove the problematic ::after pseudo-element styles */
+    display: inline !important;
+    word-wrap: break-word !important;
+    -webkit-box-decoration-break: clone !important;
+    box-decoration-break: clone !important;
+}
+
+.post-content a:not(.navbar-brand):hover,
+.page-content a:not(.navbar-brand):hover,
+.post-excerpt a:not(.navbar-brand):hover,
+.about-content a:not(.navbar-brand):hover,
+.content a:not(.navbar-brand):hover,
+p a:not(.navbar-brand):hover,
+li a:not(.navbar-brand):not(.nav > li > a):hover {
+    color: #f05f40 !important; /* Orange color on hover */
+    background-size: 0% 2px !important; /* Underline disappears on hover */
+}
+
+/* Remove all ::after pseudo-elements from links to prevent conflicts */
+.post-content a:not(.navbar-brand)::after,
+.page-content a:not(.navbar-brand)::after,
+.post-excerpt a:not(.navbar-brand)::after,
+.about-content a:not(.navbar-brand)::after,
+.content a:not(.navbar-brand)::after,
+p a:not(.navbar-brand)::after,
+li a:not(.navbar-brand):not(.nav > li > a)::after {
+    display: none !important;
+}
+
+/* Ensure navigation and footer links keep their original styling */
+#mainNav a,
+.site-footer a {
+    color: inherit !important;
+    background-image: none !important;
+}
+
+#mainNav a::after,
+.site-footer a::after {
+    display: none !important;
+}
+
+/* Explicitly ensure navbar brand stays orange */
+#mainNav .navbar-brand {
+    color: #f05f40 !important;
+    background-image: none !important;
+}
+
+#mainNav .navbar-brand:hover,
+#mainNav .navbar-brand:focus {
+    color: #eb3812 !important;
+}
 
