@@ -2859,74 +2859,82 @@ body.nav-closed .site-wrapper {
 }
 
 /* ==========================================================================
-   Elegant Link Styling - Fixed for Multi-line Text
+   Elegant Link Styling - Fixed for Multi-line Text - Text Links Only
    ========================================================================== */
 
-.post-content a:not(.navbar-brand),
-.page-content a:not(.navbar-brand),
-.post-excerpt a:not(.navbar-brand),
-.about-content a:not(.navbar-brand),
-.content a:not(.navbar-brand),
-p a:not(.navbar-brand),
-li a:not(.navbar-brand):not(.nav > li > a) {
-    color: #666666 !important; /* Slightly gray text */
-    text-decoration: none !important;
-    position: relative;
-    background-image: linear-gradient(to right, #ff8866 0%, #ff8866 100%) !important;
-    background-size: 100% 2px !important;
-    background-position: 0 100% !important;
-    background-repeat: no-repeat !important;
-    border-bottom: none !important;
-    transition: color 0.4s ease 0.2s, background-size 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
-    /* Remove the problematic ::after pseudo-element styles */
-    display: inline !important;
-    word-wrap: break-word !important;
-    -webkit-box-decoration-break: clone !important;
-    box-decoration-break: clone !important;
-}
-
-.post-content a:not(.navbar-brand):hover,
-.page-content a:not(.navbar-brand):hover,
-.post-excerpt a:not(.navbar-brand):hover,
-.about-content a:not(.navbar-brand):hover,
-.content a:not(.navbar-brand):hover,
-p a:not(.navbar-brand):hover,
-li a:not(.navbar-brand):not(.nav > li > a):hover {
-    color: #f05f40 !important; /* Orange color on hover */
-    background-size: 0% 2px !important; /* Underline disappears on hover */
-}
-
-/* Remove all ::after pseudo-elements from links to prevent conflicts */
-.post-content a:not(.navbar-brand)::after,
-.page-content a:not(.navbar-brand)::after,
-.post-excerpt a:not(.navbar-brand)::after,
-.about-content a:not(.navbar-brand)::after,
-.content a:not(.navbar-brand)::after,
-p a:not(.navbar-brand)::after,
-li a:not(.navbar-brand):not(.nav > li > a)::after {
-    display: none !important;
-}
-
-/* Ensure navigation and footer links keep their original styling */
-#mainNav a,
-.site-footer a {
-    color: inherit !important;
-    background-image: none !important;
-}
-
-#mainNav a::after,
-.site-footer a::after {
-    display: none !important;
-}
-
-/* Explicitly ensure navbar brand stays orange */
-#mainNav .navbar-brand {
-    color: #f05f40 !important;
-    background-image: none !important;
-}
-
-#mainNav .navbar-brand:hover,
-#mainNav .navbar-brand:focus {
-    color: #eb3812 !important;
-}
-
+   .post-content a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"])),
+   .page-content a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"])),
+   .post-excerpt a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"])),
+   .about-content a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"])),
+   .content a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"])),
+   .profile-text a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"])),
+   .page-description a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"])),
+   .profile-content a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"])), 
+   p a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"])),
+   li a:not(.navbar-brand):not(.nav > li > a):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"])) {
+       color: #666666 !important; /* Slightly gray text */
+       text-decoration: none !important;
+       position: relative;
+       background-image: linear-gradient(to right, #ff8866 0%, #ff8866 100%) !important;
+       background-size: 100% 2px !important;
+       background-position: 0 100% !important;
+       background-repeat: no-repeat !important;
+       border-bottom: none !important;
+       transition: color 0.4s ease 0.2s, background-size 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+       /* Remove the problematic ::after pseudo-element styles */
+       display: inline !important;
+       word-wrap: break-word !important;
+       -webkit-box-decoration-break: clone !important;
+       box-decoration-break: clone !important;
+   }
+   
+   .post-content a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"])):hover,
+   .page-content a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"])):hover,
+   .post-excerpt a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"])):hover,
+   .about-content a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"])):hover,
+   .content a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"])):hover,
+   .profile-text a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"])):hover,
+   .page-description a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"])):hover,
+   .profile-content a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"])):hover,
+   p a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"])):hover,
+   li a:not(.navbar-brand):not(.nav > li > a):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"])):hover {
+       color: #f05f40 !important; /* Orange color on hover */
+       background-size: 0% 2px !important; /* Underline disappears on hover */
+   }
+   
+   /* Remove all ::after pseudo-elements from links to prevent conflicts */
+   .post-content a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"]))::after,
+   .page-content a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"]))::after,
+   .post-excerpt a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"]))::after,
+   .about-content a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"]))::after,
+   .content a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"]))::after,
+   .profile-text a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"]))::after,
+   .page-description a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"]))::after,
+   .profile-content a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"]))::after,
+   p a:not(.navbar-brand):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"]))::after,
+   li a:not(.navbar-brand):not(.nav > li > a):not([class*="icon"]):not(.social-icons a):not(.blog-logo):not(:has(img)):not(:has([class*="icon"]))::after {
+       display: none !important;
+   }
+   
+   /* Ensure navigation and footer links keep their original styling */
+   #mainNav a,
+   .site-footer a {
+       color: inherit !important;
+       background-image: none !important;
+   }
+   
+   #mainNav a::after,
+   .site-footer a::after {
+       display: none !important;
+   }
+   
+   /* Explicitly ensure navbar brand stays orange */
+   #mainNav .navbar-brand {
+       color: #f05f40 !important;
+       background-image: none !important;
+   }
+   
+   #mainNav .navbar-brand:hover,
+   #mainNav .navbar-brand:focus {
+       color: #eb3812 !important;
+   }
