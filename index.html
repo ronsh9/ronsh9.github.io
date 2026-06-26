@@ -23,8 +23,11 @@
   <body>
     <div class="site">
       <header class="header">
-        <a id="brand" class="header__brand" href="./">
+        <a id="brand-first" class="header__brand header__brand-first" href="./">
           <h1>Ron</h1>
+          <h1 class="header__name-desktop">Shprints</h1>
+        </a>
+        <a id="brand-last" class="header__brand header__brand-last" href="./">
           <h1>Shprints</h1>
         </a>
         <div class="header__actions">
@@ -52,16 +55,16 @@
             </span>
           </button>
         </div>
+
+        <nav class="tab-nav" aria-label="Content sections">
+          <a href="#research" class="tab-nav__item" data-tab="research">Research</a>
+          <a href="#bio" class="tab-nav__item" data-tab="bio">Bio</a>
+          <a href="#potpourri" class="tab-nav__item" data-tab="potpourri">Potpourri</a>
+        </nav>
       </header>
 
       <main class="main">
         <section class="panel-left">
-          <nav class="tab-nav" aria-label="Content sections">
-            <a href="#research" class="tab-nav__item" data-tab="research">Research</a>
-            <a href="#bio" class="tab-nav__item" data-tab="bio">Bio</a>
-            <a href="#potpourri" class="tab-nav__item" data-tab="potpourri">Potpourri</a>
-          </nav>
-
           <div id="panel-research" class="panel-content" data-panel="research" hidden></div>
           <div id="panel-bio" class="panel-content" data-panel="bio" hidden></div>
           <div id="panel-potpourri" class="panel-content" data-panel="potpourri" hidden></div>

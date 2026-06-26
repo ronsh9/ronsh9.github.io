@@ -19,15 +19,29 @@
 }
 
 .header__brand {
-  grid-column: span 12;
   display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.6rem 0.75rem 0;
   font-size: var(--text-h1);
   outline: var(--border-width) solid var(--color-fg);
 }
 
-.header__brand h1:first-child {
+.header__brand-first {
+  grid-column: span 12;
+  justify-content: flex-start;
+}
+
+.header__brand-first h1:first-child {
   flex: 1;
+}
+
+.header__brand-last {
+  display: none;
+}
+
+.header__name-desktop {
+  display: inline;
 }
 
 .header__actions {
@@ -121,7 +135,7 @@
 }
 
 @media (min-width: 768px) {
-  .header__brand {
+  .header__brand-first {
     grid-column: span 9;
     padding-top: 0.25rem;
   }
@@ -180,51 +194,68 @@
 @media (max-width: 767px) {
   html,
   body {
-    overflow: hidden;
+    position: fixed;
+    width: 100%;
     height: 100%;
+    overflow: hidden;
+    overscroll-behavior: none;
   }
 
   .site {
-    height: 100vh;
-    height: 100dvh;
+    height: 100%;
     min-height: 0;
     overflow: hidden;
   }
 
   .header {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: var(--header-height) var(--tab-height);
+    height: var(--mobile-top-height);
   }
 
-  .header__brand {
-    display: contents;
-  }
-
-  .header__brand h1 {
-    display: flex;
-    align-items: center;
+  .header__brand-first {
+    grid-column: 1;
+    grid-row: 1;
     justify-content: center;
     padding: 0.6rem 0.5rem 0;
-    font-size: var(--text-h1);
-    outline: var(--border-width) solid var(--color-fg);
   }
 
-  .header__brand h1:first-child {
+  .header__brand-first h1:first-child {
     flex: unset;
   }
 
+  .header__name-desktop {
+    display: none;
+  }
+
+  .header__brand-last {
+    display: flex;
+    grid-column: 2;
+    grid-row: 1;
+    padding: 0.6rem 0.5rem 0;
+  }
+
   .header__actions {
-    grid-column: auto;
+    grid-column: 3;
+    grid-row: 1;
     justify-content: center;
     padding-right: 0;
   }
 
   .main {
     inset: var(--mobile-top-height) 0 var(--footer-height);
+    outline: none;
   }
 
   .panel-right {
     padding-top: 0;
-    overscroll-behavior-y: none;
+    outline: none;
+    height: 100%;
+    min-height: 0;
+    max-height: 100%;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
   }
 
   .site[data-mobile-view="home"] .panel-left {
@@ -240,8 +271,9 @@
 
   .site[data-mobile-view="tab"] .panel-left {
     height: 100%;
-    min-height: 100%;
+    min-height: 0;
     overflow: hidden;
+    outline: none;
   }
 }
 
