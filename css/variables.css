@@ -1,0 +1,63 @@
+:root,
+[data-theme="light"] {
+  --color-bg: #ffffff;
+  --color-fg: #000000;
+  --color-accent-bg: #000000;
+  --color-accent-fg: #ffffff;
+  --color-link: color-mix(in srgb, var(--color-fg) 82%, transparent);
+  --color-link-underline: color-mix(in srgb, var(--color-fg) 62%, transparent);
+  --color-placeholder-a: #f0f0f0;
+  --color-placeholder-b: #e0e0e0;
+  --color-placeholder-text: #999999;
+}
+
+[data-theme="dark"] {
+  --color-bg: #000000;
+  --color-fg: #ffffff;
+  --color-accent-bg: #ffffff;
+  --color-accent-fg: #000000;
+  --color-link: color-mix(in srgb, var(--color-fg) 82%, transparent);
+  --color-link-underline: color-mix(in srgb, var(--color-fg) 62%, transparent);
+  --color-placeholder-a: #1a1a1a;
+  --color-placeholder-b: #2a2a2a;
+  --color-placeholder-text: #666666;
+}
+
+:root {
+
+  --font-primary: "Source Serif 4", "Apple Garamond", Baskerville, "Libre Baskerville",
+    "Droid Serif", "Times New Roman", Times, serif;
+
+  --header-height: 3rem;
+  --footer-row-height: 2rem;
+  --footer-height: var(--footer-row-height);
+  --tab-height: 3rem;
+  --border-width: 1px;
+
+  --text-h1: 1.375rem;
+  --text-h2: 1.125rem;
+  --text-h3: 0.875rem;
+  --text-h4: 0.75rem;
+  --text-nav: 1.5rem;
+
+  --link-dot-thickness: 2px;
+  --link-dot-len: 2px;
+  --link-dot-gap: 3px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --text-h1: 1.75rem;
+    --text-h2: 1.25rem;
+    --text-nav: 1.875rem;
+  }
+}
+
+@media (min-width: 1700px) {
+  :root {
+    --text-h1: 2rem;
+    --text-h2: 1.5rem;
+    --text-h3: 1rem;
+    --text-h4: 0.75rem;
+  }
+}

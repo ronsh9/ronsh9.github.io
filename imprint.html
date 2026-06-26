@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Personal website">
-    <title>Personal Website</title>
+    <meta name="description" content="Imprint">
+    <title>Imprint</title>
 
     <link rel="icon" href="favicon.ico" sizes="32x32">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -18,27 +18,16 @@
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/components.css">
     <script src="js/theme.js"></script>
-    <script src="js/panel.js"></script>
   </head>
   <body>
     <div class="site">
       <header class="header">
-        <a id="brand" class="header__brand" href="./">
+        <a class="header__brand" href="./">
           <h1>Ron</h1>
           <h1>Shprints</h1>
         </a>
         <div class="header__actions">
-          <button
-            id="panel-toggle"
-            class="header__icon-btn panel-toggle"
-            type="button"
-            aria-label="Hide right panel"
-            aria-expanded="true"
-          >
-            <span class="panel-toggle__icon panel-toggle__icon--collapse" aria-hidden="true">&gt;&gt;</span>
-            <span class="panel-toggle__icon panel-toggle__icon--expand" aria-hidden="true">&lt;&lt;</span>
-          </button>
-          <button id="theme-toggle" class="header__icon-btn theme-toggle" type="button" aria-label="Switch to dark mode">
+          <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode">
             <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
                 <circle cx="12" cy="12" r="4"></circle>
@@ -54,24 +43,13 @@
         </div>
       </header>
 
-      <main class="main">
-        <section class="panel-left">
-          <nav class="tab-nav" aria-label="Content sections">
-            <a href="#tour" class="tab-nav__item" data-tab="tour">Research</a>
-            <a href="#archive" class="tab-nav__item" data-tab="archive">Bio</a>
-            <a href="#store" class="tab-nav__item" data-tab="store">Potpourri</a>
-          </nav>
-
-          <div id="panel-tour" class="panel-content" data-panel="tour" hidden></div>
-          <div id="panel-store" class="panel-content" data-panel="store" hidden></div>
-          <div id="panel-archive" class="panel-content" data-panel="archive" hidden></div>
-        </section>
-
-        <aside class="panel-right">
-          <div id="bio-content"></div>
-          <div id="newsletter-form"></div>
-          <div id="contacts" class="contacts"></div>
-        </aside>
+      <main class="imprint-page">
+        <h2>Imprint</h2>
+        <p>
+          Replace this page with your legal information: name, address, contact details,
+          and any other disclosures required in your jurisdiction.
+        </p>
+        <p><a href="./" class="link-underline">← Back to home</a></p>
       </main>
 
       <footer class="footer">
@@ -87,6 +65,16 @@
 
     <script src="js/config.js"></script>
     <script src="js/footer.js"></script>
-    <script src="js/app.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const brand = document.querySelector(".header__brand");
+        if (brand && typeof SITE_CONFIG !== "undefined") {
+          brand.innerHTML = `
+            <h1>${SITE_CONFIG.brand.firstName}</h1>
+            <h1>${SITE_CONFIG.brand.lastName}</h1>
+          `;
+        }
+      });
+    </script>
   </body>
 </html>

@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Personal website">
-    <title>Personal Website</title>
+    <meta name="description" content="Info">
+    <title>Info</title>
 
-    <link rel="icon" href="favicon.ico" sizes="32x32">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="favicon.png" type="image/png" sizes="32x32">
-    <link rel="apple-touch-icon" href="assets/icon/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/assets/icon/apple-touch-icon.png" sizes="180x180">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
 
@@ -18,26 +18,15 @@
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/components.css">
     <script src="js/theme.js"></script>
-    <script src="js/panel.js"></script>
   </head>
   <body>
     <div class="site">
       <header class="header">
-        <a id="brand" class="header__brand" href="./">
+        <a class="header__brand" href="./">
           <h1>Ron</h1>
           <h1>Shprints</h1>
         </a>
         <div class="header__actions">
-          <button
-            id="panel-toggle"
-            class="header__icon-btn panel-toggle"
-            type="button"
-            aria-label="Hide right panel"
-            aria-expanded="true"
-          >
-            <span class="panel-toggle__icon panel-toggle__icon--collapse" aria-hidden="true">&gt;&gt;</span>
-            <span class="panel-toggle__icon panel-toggle__icon--expand" aria-hidden="true">&lt;&lt;</span>
-          </button>
           <button id="theme-toggle" class="header__icon-btn theme-toggle" type="button" aria-label="Switch to dark mode">
             <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
@@ -54,24 +43,15 @@
         </div>
       </header>
 
-      <main class="main">
-        <section class="panel-left">
-          <nav class="tab-nav" aria-label="Content sections">
-            <a href="#tour" class="tab-nav__item" data-tab="tour">Research</a>
-            <a href="#archive" class="tab-nav__item" data-tab="archive">Bio</a>
-            <a href="#store" class="tab-nav__item" data-tab="store">Potpourri</a>
-          </nav>
-
-          <div id="panel-tour" class="panel-content" data-panel="tour" hidden></div>
-          <div id="panel-store" class="panel-content" data-panel="store" hidden></div>
-          <div id="panel-archive" class="panel-content" data-panel="archive" hidden></div>
-        </section>
-
-        <aside class="panel-right">
-          <div id="bio-content"></div>
-          <div id="newsletter-form"></div>
-          <div id="contacts" class="contacts"></div>
-        </aside>
+      <main class="info-page">
+        <p>
+          This website is inspired by the website of
+          <a href="https://www.davidxaugust.com/" class="link-underline" target="_blank" rel="noopener noreferrer">David August</a>.
+          If you haven't heard of him before, you should listen to
+          <a href="https://www.youtube.com/watch?v=mRfwdJx0NDE" class="link-underline" target="_blank" rel="noopener noreferrer">this</a>.
+          It's one of the most unique electronic music performances I've ever heard. I decided to adapt it into a personal website as it reminded me of the structure of coding IDEs as well as some computational chemistry software such as <a href="https://www.gromacs.org/" class="link-underline" target="_blank" rel="noopener noreferrer">GROMACS</a>. Other than that, it was my intention to create a minimalistic website to emphasize the content over the visualizations. While I was strongly tempted to do it the ol' school way with raw html, I eventually decided to go for something a bit more sophisticated. While this argument isn't very well motivated, you may read more about website design <a href="https://gwern.net/design" class="link-underline" target="_blank" rel="noopener noreferrer">here</a>. The Potpourri section is inspired by <a href="https://malbergo.me/" class="link-underline" target="_blank" rel="noopener noreferrer">Michael Albergo</a>'s website.
+     
+        </p>
       </main>
 
       <footer class="footer">
@@ -87,6 +67,16 @@
 
     <script src="js/config.js"></script>
     <script src="js/footer.js"></script>
-    <script src="js/app.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const brand = document.querySelector(".header__brand");
+        if (brand && typeof SITE_CONFIG !== "undefined") {
+          brand.innerHTML = `
+            <h1>${SITE_CONFIG.brand.firstName}</h1>
+            <h1>${SITE_CONFIG.brand.lastName}</h1>
+          `;
+        }
+      });
+    </script>
   </body>
 </html>
