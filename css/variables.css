@@ -53,6 +53,13 @@
   }
 }
 
+@media (max-width: 767px) {
+  :root {
+    --mobile-top-height: calc(var(--header-height) + var(--tab-height));
+    --footer-height: calc(var(--footer-row-height) * 2 + 1px);
+  }
+}
+
 @media (min-width: 1700px) {
   :root {
     --text-h1: 2rem;
