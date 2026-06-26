@@ -163,6 +163,11 @@
     archive: "bio",
     store: "potpourri",
   };
+  const PANEL_LEGACY_IDS = {
+    research: "panel-tour",
+    bio: "panel-archive",
+    potpourri: "panel-store",
+  };
   const DEFAULT_TAB = "research";
   const MOBILE_QUERY = window.matchMedia("(max-width: 767px)");
 
@@ -170,14 +175,51 @@
     return MOBILE_QUERY.matches;
   }
 
-  function normalizeTab(hash) {
-    if (VALID_TABS.includes(hash)) return hash;
-    return LEGACY_TAB_ALIASES[hash] || null;
+  function canonicalTab(tabId) {
+    if (!tabId) return null;
+    if (VALID_TABS.includes(tabId)) return tabId;
+    return LEGACY_TAB_ALIASES[tabId] || null;
   }
 
   function getTabFromUrl() {
     const hash = window.location.hash.replace("#", "");
-    return normalizeTab(hash);
+    return canonicalTab(hash);
+  }
+
+  function getPanelElement(tabId) {
+    return (
+      document.getElementById(`panel-${tabId}`) ||
+      document.getElementById(PANEL_LEGACY_IDS[tabId])
+    );
+  }
+
+  function migrateLegacyMarkup() {
+    document.querySelectorAll(".tab-nav__item").forEach((tab) => {
+      const tabId = canonicalTab(tab.dataset.tab);
+      if (!tabId) return;
+
+      tab.dataset.tab = tabId;
+      tab.setAttribute("href", `#${tabId}`);
+    });
+
+    Object.entries(PANEL_LEGACY_IDS).forEach(([tabId, legacyId]) => {
+      const panel = document.getElementById(`panel-${tabId}`) || document.getElementById(legacyId);
+      if (!panel) return;
+
+      panel.id = `panel-${tabId}`;
+      panel.dataset.panel = tabId;
+    });
+  }
+
+  function resolveView(tabId) {
+    const canonical = canonicalTab(tabId);
+
+    if (isMobile()) {
+      return { activeTab: canonical, urlTab: canonical };
+    }
+
+    const activeTab = canonical || DEFAULT_TAB;
+    return { activeTab, urlTab: activeTab };
   }
 
   function updateMobileView(tabId) {
@@ -191,21 +233,18 @@
     }
   }
 
-  function setActiveTab(tabId) {
+  function setActiveTab(activeTab) {
     document.querySelectorAll(".tab-nav__item").forEach((tab) => {
-      tab.classList.toggle("is-active", tabId !== null && tab.dataset.tab === tabId);
+      const tabKey = canonicalTab(tab.dataset.tab) || tab.dataset.tab;
+      tab.classList.toggle("is-active", activeTab !== null && tabKey === activeTab);
     });
 
     document.querySelectorAll(".panel-content").forEach((panel) => {
-      if (isMobile()) {
-        panel.hidden = tabId === null || panel.dataset.panel !== tabId;
-      } else {
-        const activeTab = tabId || DEFAULT_TAB;
-        panel.hidden = panel.dataset.panel !== activeTab;
-      }
+      const panelKey = canonicalTab(panel.dataset.panel) || panel.dataset.panel;
+      panel.hidden = activeTab === null || panelKey !== activeTab;
     });
 
-    updateMobileView(tabId);
+    updateMobileView(activeTab);
   }
 
   function updateUrl(tabId) {
@@ -219,8 +258,9 @@
   }
 
   function applyView(tabId) {
-    setActiveTab(tabId);
-    updateUrl(tabId);
+    const { activeTab, urlTab } = resolveView(tabId);
+    setActiveTab(activeTab);
+    updateUrl(urlTab);
   }
 
   function goHome() {
@@ -229,7 +269,7 @@
 
   function initTabs() {
     const initialTab = getTabFromUrl();
-    applyView(isMobile() ? initialTab : initialTab || DEFAULT_TAB);
+    applyView(initialTab);
 
     document.querySelectorAll(".tab-nav__item").forEach((tab) => {
       tab.addEventListener("click", (e) => {
@@ -252,13 +292,11 @@
     }
 
     window.addEventListener("hashchange", () => {
-      const tab = getTabFromUrl();
-      applyView(isMobile() ? tab : tab || DEFAULT_TAB);
+      applyView(getTabFromUrl());
     });
 
     MOBILE_QUERY.addEventListener("change", () => {
-      const tab = getTabFromUrl();
-      applyView(isMobile() ? tab : tab || DEFAULT_TAB);
+      applyView(getTabFromUrl());
     });
   }
 
@@ -275,15 +313,15 @@
       brand.href = config.brand.homeUrl;
     }
 
-    const researchPanel = document.getElementById("panel-research");
+    const researchPanel = getPanelElement("research");
     if (researchPanel) researchPanel.innerHTML = renderResearchPanel();
 
-    const potpourriPanel = document.getElementById("panel-potpourri");
+    const potpourriPanel = getPanelElement("potpourri");
     if (potpourriPanel) {
       potpourriPanel.innerHTML = `<ul class="potpourri-grid">${config.potpourri.map(renderPotpourriItem).join("")}</ul>`;
     }
 
-    const bioPanel = document.getElementById("panel-bio");
+    const bioPanel = getPanelElement("bio");
     if (bioPanel) {
       bioPanel.innerHTML = renderBioPanel();
     }
@@ -299,6 +337,7 @@
   }
 
   document.addEventListener("DOMContentLoaded", () => {
+    migrateLegacyMarkup();
     populatePage();
     initTabs();
   });
