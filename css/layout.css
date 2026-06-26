@@ -200,6 +200,11 @@
     height: var(--mobile-top-height);
   }
 
+  .site--simple .header {
+    grid-template-rows: var(--header-height);
+    height: var(--header-height);
+  }
+
   .header__brand {
     grid-column: 1 / span 4;
     grid-row: 1;
