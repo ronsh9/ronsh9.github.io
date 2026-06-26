@@ -34,6 +34,12 @@
       site.dataset.rightPanel = "collapsed";
     } else {
       site.removeAttribute("data-right-panel");
+      const right = document.querySelector(".panel-right");
+      if (right) {
+        requestAnimationFrame(() => {
+          right.scrollTop = 0;
+        });
+      }
     }
 
     updateButton(collapsed);

@@ -233,6 +233,17 @@
     }
   }
 
+  function scrollToTop(el) {
+    if (!el) return;
+    requestAnimationFrame(() => {
+      el.scrollTop = 0;
+    });
+  }
+
+  function resetRightPanelScroll() {
+    scrollToTop(document.querySelector(".panel-right"));
+  }
+
   function setActiveTab(activeTab) {
     document.querySelectorAll(".tab-nav__item").forEach((tab) => {
       const tabKey = canonicalTab(tab.dataset.tab) || tab.dataset.tab;
@@ -241,7 +252,9 @@
 
     document.querySelectorAll(".panel-content").forEach((panel) => {
       const panelKey = canonicalTab(panel.dataset.panel) || panel.dataset.panel;
-      panel.hidden = activeTab === null || panelKey !== activeTab;
+      const isActive = activeTab !== null && panelKey === activeTab;
+      panel.hidden = !isActive;
+      if (isActive) scrollToTop(panel);
     });
 
     updateMobileView(activeTab);
@@ -261,6 +274,7 @@
     const { activeTab, urlTab } = resolveView(tabId);
     setActiveTab(activeTab);
     updateUrl(urlTab);
+    if (activeTab === null) resetRightPanelScroll();
   }
 
   function goHome() {
