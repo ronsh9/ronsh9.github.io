@@ -5,7 +5,7 @@
 const SITE_CONFIG = {
   meta: {
     title: "Ron Shprints",
-    description: "Official Website — template recreation",
+    description: "Official Website of Ron Shprints",
     copyright: "© 2025-2026 Ron Shprints",
     lastUpdated: "26 JUN 2026",
     email: "ronsh at mit dot edu",
@@ -87,7 +87,7 @@ const SITE_CONFIG = {
     ],
   },
 
-  store: [
+  potpourri: [
     {
       name: "my favorite spot in boston",
       date: "2026",

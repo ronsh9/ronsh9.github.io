@@ -1,8 +1,8 @@
 /**
  * Collapse / expand the right panel on wide screens.
+ * The panel always starts expanded on desktop; collapse is session-only.
  */
 (function () {
-  const STORAGE_KEY = "right-panel-collapsed";
   const DESKTOP_QUERY = window.matchMedia("(min-width: 768px)");
 
   function isDesktop() {
@@ -20,7 +20,7 @@
     );
   }
 
-  function setCollapsed(collapsed, persist) {
+  function setCollapsed(collapsed) {
     const site = document.querySelector(".site");
     if (!site) return;
 
@@ -37,14 +37,10 @@
     }
 
     updateButton(collapsed);
-
-    if (persist !== false) {
-      localStorage.setItem(STORAGE_KEY, collapsed ? "collapsed" : "expanded");
-    }
   }
 
-  function getStoredCollapsed() {
-    return localStorage.getItem(STORAGE_KEY) === "collapsed";
+  function expandPanel() {
+    setCollapsed(false);
   }
 
   function togglePanel() {
@@ -54,16 +50,14 @@
     setCollapsed(site.dataset.rightPanel !== "collapsed");
   }
 
-  function syncPanel() {
-    setCollapsed(isDesktop() && getStoredCollapsed(), false);
-  }
-
   document.addEventListener("DOMContentLoaded", () => {
+    localStorage.removeItem("right-panel-collapsed");
+
     const button = document.getElementById("panel-toggle");
     if (!button) return;
 
     button.addEventListener("click", togglePanel);
-    syncPanel();
-    DESKTOP_QUERY.addEventListener("change", syncPanel);
+    expandPanel();
+    DESKTOP_QUERY.addEventListener("change", expandPanel);
   });
 })();

@@ -221,7 +221,7 @@
   opacity: 0.55;
 }
 
-/* Tour & archive list items */
+/* Publication list items */
 .list-item {
   display: flex;
   align-items: center;
@@ -292,7 +292,7 @@
   }
 }
 
-/* Archive section headers */
+/* Section headers */
 .section-header {
   position: sticky;
   top: 0;
@@ -303,65 +303,65 @@
   border-bottom: var(--border-width) solid var(--color-fg);
 }
 
-/* Store grid */
-.store-grid {
+/* Potpourri grid */
+.potpourri-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1px;
 }
 
-.product-card {
+.potpourri-card {
   outline: var(--border-width) solid var(--color-fg);
   overflow: hidden;
 }
 
-.product-card__link {
+.potpourri-card__link {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-.product-card__link--static {
+.potpourri-card__link--static {
   cursor: default;
 }
 
-.product-card__link--static .product-card__image {
+.potpourri-card__link--static .potpourri-card__image {
   transition: none;
 }
 
-.product-card__link--static:hover .product-card__image {
+.potpourri-card__link--static:hover .potpourri-card__image {
   transform: none;
 }
 
-.product-card__label {
+.potpourri-card__label {
   display: flex;
   flex-direction: column;
   flex: 1;
   padding-bottom: 0.25rem;
 }
 
-.product-card__name {
+.potpourri-card__name {
   flex-grow: 1;
   padding: 0.75rem 0 0.75rem 0.75rem;
   width: 75%;
 }
 
-.product-card__date {
+.potpourri-card__date {
   padding: 0 0.75rem;
   margin-top: auto;
 }
 
-.product-card__image-wrap {
+.potpourri-card__image-wrap {
   overflow: hidden;
 }
 
-.product-card__image {
+.potpourri-card__image {
   width: 100%;
   object-fit: contain;
   transition: transform 0.3s ease-in-out;
 }
 
-.product-card__link:not(.product-card__link--static):hover .product-card__image {
+.potpourri-card__link:not(.potpourri-card__link--static):hover .potpourri-card__image {
   transform: scale(1.05);
 }
 
@@ -489,7 +489,7 @@
   line-height: 1.6;
 }
 
-/* Placeholder product images */
+/* Placeholder images */
 .placeholder-image {
   aspect-ratio: 1;
   background: repeating-linear-gradient(

@@ -80,27 +80,27 @@
     return `<div class="bio-panel">${config.bioPanel.trim()}</div>`;
   }
 
-  function renderProduct(product) {
-    const imageHtml = product.image
-      ? `<img class="product-card__image" src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" loading="lazy">`
+  function renderPotpourriItem(item) {
+    const imageHtml = item.image
+      ? `<img class="potpourri-card__image" src="${escapeHtml(item.image)}" alt="${escapeHtml(item.name)}" loading="lazy">`
       : `<div class="placeholder-image" aria-hidden="true">Image</div>`;
 
     const content = `
-      <div class="product-card__label">
-        <h2 class="product-card__name">${escapeHtml(product.name)}</h2>
-        <h3 class="product-card__date">${escapeHtml(product.date)}</h3>
+      <div class="potpourri-card__label">
+        <h2 class="potpourri-card__name">${escapeHtml(item.name)}</h2>
+        <h3 class="potpourri-card__date">${escapeHtml(item.date)}</h3>
       </div>
-      <div class="product-card__image-wrap">${imageHtml}</div>
+      <div class="potpourri-card__image-wrap">${imageHtml}</div>
     `;
 
-    const isClickable = product.url && product.url !== "#";
+    const isClickable = item.url && item.url !== "#";
 
     return `
-      <li class="product-card">
+      <li class="potpourri-card">
         ${
           isClickable
-            ? `<a href="${escapeHtml(product.url)}" class="product-card__link" target="_blank" rel="noopener noreferrer">${content}</a>`
-            : `<div class="product-card__link product-card__link--static">${content}</div>`
+            ? `<a href="${escapeHtml(item.url)}" class="potpourri-card__link" target="_blank" rel="noopener noreferrer">${content}</a>`
+            : `<div class="potpourri-card__link potpourri-card__link--static">${content}</div>`
         }
       </li>
     `;
@@ -157,16 +157,27 @@
       .join("");
   }
 
-  const VALID_TABS = ["tour", "store", "archive"];
+  const VALID_TABS = ["research", "bio", "potpourri"];
+  const LEGACY_TAB_ALIASES = {
+    tour: "research",
+    archive: "bio",
+    store: "potpourri",
+  };
+  const DEFAULT_TAB = "research";
   const MOBILE_QUERY = window.matchMedia("(max-width: 767px)");
 
   function isMobile() {
     return MOBILE_QUERY.matches;
   }
 
+  function normalizeTab(hash) {
+    if (VALID_TABS.includes(hash)) return hash;
+    return LEGACY_TAB_ALIASES[hash] || null;
+  }
+
   function getTabFromUrl() {
     const hash = window.location.hash.replace("#", "");
-    return VALID_TABS.includes(hash) ? hash : null;
+    return normalizeTab(hash);
   }
 
   function updateMobileView(tabId) {
@@ -189,7 +200,7 @@
       if (isMobile()) {
         panel.hidden = tabId === null || panel.dataset.panel !== tabId;
       } else {
-        const activeTab = tabId || "tour";
+        const activeTab = tabId || DEFAULT_TAB;
         panel.hidden = panel.dataset.panel !== activeTab;
       }
     });
@@ -218,7 +229,7 @@
 
   function initTabs() {
     const initialTab = getTabFromUrl();
-    applyView(isMobile() ? initialTab : initialTab || "tour");
+    applyView(isMobile() ? initialTab : initialTab || DEFAULT_TAB);
 
     document.querySelectorAll(".tab-nav__item").forEach((tab) => {
       tab.addEventListener("click", (e) => {
@@ -236,18 +247,18 @@
           return;
         }
 
-        applyView("tour");
+        applyView(DEFAULT_TAB);
       });
     }
 
     window.addEventListener("hashchange", () => {
       const tab = getTabFromUrl();
-      applyView(isMobile() ? tab : tab || "tour");
+      applyView(isMobile() ? tab : tab || DEFAULT_TAB);
     });
 
     MOBILE_QUERY.addEventListener("change", () => {
       const tab = getTabFromUrl();
-      applyView(isMobile() ? tab : tab || "tour");
+      applyView(isMobile() ? tab : tab || DEFAULT_TAB);
     });
   }
 
@@ -264,17 +275,17 @@
       brand.href = config.brand.homeUrl;
     }
 
-    const tourPanel = document.getElementById("panel-tour");
-    if (tourPanel) tourPanel.innerHTML = renderResearchPanel();
+    const researchPanel = document.getElementById("panel-research");
+    if (researchPanel) researchPanel.innerHTML = renderResearchPanel();
 
-    const storePanel = document.getElementById("panel-store");
-    if (storePanel) {
-      storePanel.innerHTML = `<ul class="store-grid">${config.store.map(renderProduct).join("")}</ul>`;
+    const potpourriPanel = document.getElementById("panel-potpourri");
+    if (potpourriPanel) {
+      potpourriPanel.innerHTML = `<ul class="potpourri-grid">${config.potpourri.map(renderPotpourriItem).join("")}</ul>`;
     }
 
-    const archivePanel = document.getElementById("panel-archive");
-    if (archivePanel) {
-      archivePanel.innerHTML = renderBioPanel();
+    const bioPanel = document.getElementById("panel-bio");
+    if (bioPanel) {
+      bioPanel.innerHTML = renderBioPanel();
     }
 
     const bioEl = document.getElementById("bio-content");
