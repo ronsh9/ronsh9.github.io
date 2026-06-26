@@ -19,29 +19,16 @@
 }
 
 .header__brand {
+  grid-column: span 12;
   display: flex;
   align-items: center;
-  justify-content: center;
   padding: 0.6rem 0.75rem 0;
   font-size: var(--text-h1);
   outline: var(--border-width) solid var(--color-fg);
 }
 
-.header__brand-first {
-  grid-column: span 12;
-  justify-content: flex-start;
-}
-
-.header__brand-first h1:first-child {
+.header__brand h1:first-child {
   flex: 1;
-}
-
-.header__brand-last {
-  display: none;
-}
-
-.header__name-desktop {
-  display: inline;
 }
 
 .header__actions {
@@ -135,7 +122,7 @@
 }
 
 @media (min-width: 768px) {
-  .header__brand-first {
+  .header__brand {
     grid-column: span 9;
     padding-top: 0.25rem;
   }
@@ -213,23 +200,15 @@
     height: var(--mobile-top-height);
   }
 
-  .header__brand-first {
+  .header__brand {
     grid-column: 1 / span 4;
     grid-row: 1;
     justify-content: flex-start;
     padding: 0.6rem 0.75rem 0;
   }
 
-  .header__brand-first h1:first-child {
+  .header__brand h1:first-child {
     flex: 1;
-  }
-
-  .header__name-desktop {
-    display: block;
-  }
-
-  .header__brand-last {
-    display: none;
   }
 
   .header__actions {

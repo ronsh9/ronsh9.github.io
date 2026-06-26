@@ -278,11 +278,8 @@
       });
     });
 
-    const brandFirst = document.getElementById("brand-first");
-    const brandLast = document.getElementById("brand-last");
-    [brandFirst, brandLast].forEach((brand) => {
-      if (!brand) return;
-
+    const brand = document.getElementById("brand");
+    if (brand) {
       brand.addEventListener("click", (e) => {
         e.preventDefault();
         if (isMobile()) {
@@ -292,7 +289,7 @@
 
         applyView(DEFAULT_TAB);
       });
-    });
+    }
 
     window.addEventListener("hashchange", () => {
       applyView(getTabFromUrl());
@@ -307,18 +304,13 @@
     document.title = config.meta.title;
     document.querySelector('meta[name="description"]')?.setAttribute("content", config.meta.description);
 
-    const brandFirst = document.getElementById("brand-first");
-    const brandLast = document.getElementById("brand-last");
-    if (brandFirst) {
-      brandFirst.innerHTML = `
+    const brand = document.getElementById("brand");
+    if (brand) {
+      brand.innerHTML = `
         <h1>${escapeHtml(config.brand.firstName)}</h1>
-        <h1 class="header__name-desktop">${escapeHtml(config.brand.lastName)}</h1>
+        <h1>${escapeHtml(config.brand.lastName)}</h1>
       `;
-      brandFirst.href = config.brand.homeUrl;
-    }
-    if (brandLast) {
-      brandLast.innerHTML = `<h1>${escapeHtml(config.brand.lastName)}</h1>`;
-      brandLast.href = config.brand.homeUrl;
+      brand.href = config.brand.homeUrl;
     }
 
     const researchPanel = getPanelElement("research");
