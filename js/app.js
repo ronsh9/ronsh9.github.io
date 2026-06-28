@@ -289,7 +289,8 @@
           return;
         }
 
-        applyView(DEFAULT_TAB);
+        window.PanelControls?.expandRightPanel();
+        window.PanelControls?.expandTabNav({ resetScroll: false });
       });
     }
 

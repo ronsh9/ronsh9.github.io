@@ -27,7 +27,8 @@
     );
   }
 
-  function setRightPanelCollapsed(collapsed) {
+  function setRightPanelCollapsed(collapsed, options = {}) {
+    const { resetScroll = true } = options;
     const site = document.querySelector(".site");
     if (!site) return;
 
@@ -41,14 +42,18 @@
       site.dataset.rightPanel = "collapsed";
     } else {
       site.removeAttribute("data-right-panel");
-      scrollToTop(document.querySelector(".panel-right"));
+      if (resetScroll) {
+        scrollToTop(document.querySelector(".panel-right"));
+      }
     }
 
     updatePanelButton(collapsed);
   }
 
-  function expandRightPanel() {
-    setRightPanelCollapsed(false);
+  function expandRightPanel(options) {
+    const site = document.querySelector(".site");
+    if (!site || !isDesktop() || site.dataset.rightPanel !== "collapsed") return;
+    setRightPanelCollapsed(false, options);
   }
 
   function toggleRightPanel() {
@@ -69,7 +74,8 @@
     );
   }
 
-  function setTabNavCollapsed(collapsed) {
+  function setTabNavCollapsed(collapsed, options = {}) {
+    const { resetScroll = true } = options;
     const site = document.querySelector(".site");
     if (!site) return;
 
@@ -83,15 +89,19 @@
       site.dataset.tabNav = "collapsed";
     } else {
       site.removeAttribute("data-tab-nav");
-      const activePanel = document.querySelector(".panel-content:not([hidden])");
-      scrollToTop(activePanel);
+      if (resetScroll) {
+        const activePanel = document.querySelector(".panel-content:not([hidden])");
+        scrollToTop(activePanel);
+      }
     }
 
     updateTabNavButton(collapsed);
   }
 
-  function expandTabNav() {
-    setTabNavCollapsed(false);
+  function expandTabNav(options) {
+    const site = document.querySelector(".site");
+    if (!site || !isDesktop() || site.dataset.tabNav !== "collapsed") return;
+    setTabNavCollapsed(false, options);
   }
 
   function toggleTabNav() {
@@ -102,8 +112,8 @@
   }
 
   function syncDesktopPanels() {
-    expandRightPanel();
-    expandTabNav();
+    setRightPanelCollapsed(false);
+    setTabNavCollapsed(false);
   }
 
   document.addEventListener("DOMContentLoaded", () => {
@@ -121,5 +131,10 @@
 
     syncDesktopPanels();
     DESKTOP_QUERY.addEventListener("change", syncDesktopPanels);
+
+    window.PanelControls = {
+      expandRightPanel,
+      expandTabNav,
+    };
   });
 })();
