@@ -1,6 +1,6 @@
 /**
- * Collapse / expand the tab navigation and right panel on wide screens.
- * Both always start expanded on desktop; collapse is session-only.
+ * Collapse / expand the tab navigation (all widths) and right panel (desktop).
+ * Both always start expanded; collapse is session-only.
  */
 (function () {
   const DESKTOP_QUERY = window.matchMedia("(min-width: 768px)");
@@ -79,12 +79,6 @@
     const site = document.querySelector(".site");
     if (!site) return;
 
-    if (!isDesktop()) {
-      site.removeAttribute("data-tab-nav");
-      updateTabNavButton(false);
-      return;
-    }
-
     if (collapsed) {
       site.dataset.tabNav = "collapsed";
     } else {
@@ -100,18 +94,18 @@
 
   function expandTabNav(options) {
     const site = document.querySelector(".site");
-    if (!site || !isDesktop() || site.dataset.tabNav !== "collapsed") return;
+    if (!site || site.dataset.tabNav !== "collapsed") return;
     setTabNavCollapsed(false, options);
   }
 
   function toggleTabNav() {
     const site = document.querySelector(".site");
-    if (!site || !isDesktop()) return;
+    if (!site) return;
 
     setTabNavCollapsed(site.dataset.tabNav !== "collapsed");
   }
 
-  function syncDesktopPanels() {
+  function syncLayout() {
     setRightPanelCollapsed(false);
     setTabNavCollapsed(false);
   }
@@ -129,8 +123,8 @@
       tabNavButton.addEventListener("click", toggleTabNav);
     }
 
-    syncDesktopPanels();
-    DESKTOP_QUERY.addEventListener("change", syncDesktopPanels);
+    syncLayout();
+    DESKTOP_QUERY.addEventListener("change", syncLayout);
 
     window.PanelControls = {
       expandRightPanel,

@@ -285,6 +285,7 @@
       brand.addEventListener("click", (e) => {
         e.preventDefault();
         if (isMobile()) {
+          window.PanelControls?.expandTabNav({ resetScroll: false });
           goHome();
           return;
         }
