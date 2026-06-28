@@ -198,8 +198,7 @@
   text-transform: none;
 }
 
-.publication-author,
-.publication-links__label {
+.publication-author {
   font-family: inherit;
   text-transform: none;
 }
@@ -209,8 +208,7 @@
   color: var(--color-fg);
 }
 
-.list-item:hover .publication-item__authors,
-.list-item:hover .publication-item__links {
+.list-item:hover .publication-item__authors {
   color: color-mix(in srgb, var(--color-accent-fg) 72%, transparent);
 }
 
@@ -244,20 +242,6 @@
 .list-item:hover .publication-item__venue {
   background: color-mix(in srgb, var(--color-accent-fg) 12%, var(--color-accent-bg));
   color: color-mix(in srgb, var(--color-accent-fg) 82%, transparent);
-}
-
-.publication-item__links {
-  display: inline-flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-  font-family: inherit;
-  font-weight: 320;
-  color: color-mix(in srgb, var(--color-fg) 82%, transparent);
-}
-
-.publication-links__sep {
-  opacity: 0.55;
 }
 
 /* Publication list items */

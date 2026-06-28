@@ -1,6 +1,6 @@
 /**
- * Collapse / expand the right panel on wide screens.
- * The panel always starts expanded on desktop; collapse is session-only.
+ * Collapse / expand the tab navigation and right panel on wide screens.
+ * Both always start expanded on desktop; collapse is session-only.
  */
 (function () {
   const DESKTOP_QUERY = window.matchMedia("(min-width: 768px)");
@@ -9,7 +9,14 @@
     return DESKTOP_QUERY.matches;
   }
 
-  function updateButton(collapsed) {
+  function scrollToTop(el) {
+    if (!el) return;
+    requestAnimationFrame(() => {
+      el.scrollTop = 0;
+    });
+  }
+
+  function updatePanelButton(collapsed) {
     const button = document.getElementById("panel-toggle");
     if (!button) return;
 
@@ -20,13 +27,13 @@
     );
   }
 
-  function setCollapsed(collapsed) {
+  function setRightPanelCollapsed(collapsed) {
     const site = document.querySelector(".site");
     if (!site) return;
 
     if (!isDesktop()) {
       site.removeAttribute("data-right-panel");
-      updateButton(false);
+      updatePanelButton(false);
       return;
     }
 
@@ -34,36 +41,85 @@
       site.dataset.rightPanel = "collapsed";
     } else {
       site.removeAttribute("data-right-panel");
-      const right = document.querySelector(".panel-right");
-      if (right) {
-        requestAnimationFrame(() => {
-          right.scrollTop = 0;
-        });
-      }
+      scrollToTop(document.querySelector(".panel-right"));
     }
 
-    updateButton(collapsed);
+    updatePanelButton(collapsed);
   }
 
-  function expandPanel() {
-    setCollapsed(false);
+  function expandRightPanel() {
+    setRightPanelCollapsed(false);
   }
 
-  function togglePanel() {
+  function toggleRightPanel() {
     const site = document.querySelector(".site");
     if (!site || !isDesktop()) return;
 
-    setCollapsed(site.dataset.rightPanel !== "collapsed");
+    setRightPanelCollapsed(site.dataset.rightPanel !== "collapsed");
+  }
+
+  function updateTabNavButton(collapsed) {
+    const button = document.getElementById("tab-nav-toggle");
+    if (!button) return;
+
+    button.setAttribute("aria-expanded", collapsed ? "false" : "true");
+    button.setAttribute(
+      "aria-label",
+      collapsed ? "Show navigation" : "Hide navigation"
+    );
+  }
+
+  function setTabNavCollapsed(collapsed) {
+    const site = document.querySelector(".site");
+    if (!site) return;
+
+    if (!isDesktop()) {
+      site.removeAttribute("data-tab-nav");
+      updateTabNavButton(false);
+      return;
+    }
+
+    if (collapsed) {
+      site.dataset.tabNav = "collapsed";
+    } else {
+      site.removeAttribute("data-tab-nav");
+      const activePanel = document.querySelector(".panel-content:not([hidden])");
+      scrollToTop(activePanel);
+    }
+
+    updateTabNavButton(collapsed);
+  }
+
+  function expandTabNav() {
+    setTabNavCollapsed(false);
+  }
+
+  function toggleTabNav() {
+    const site = document.querySelector(".site");
+    if (!site || !isDesktop()) return;
+
+    setTabNavCollapsed(site.dataset.tabNav !== "collapsed");
+  }
+
+  function syncDesktopPanels() {
+    expandRightPanel();
+    expandTabNav();
   }
 
   document.addEventListener("DOMContentLoaded", () => {
     localStorage.removeItem("right-panel-collapsed");
 
-    const button = document.getElementById("panel-toggle");
-    if (!button) return;
+    const panelButton = document.getElementById("panel-toggle");
+    if (panelButton) {
+      panelButton.addEventListener("click", toggleRightPanel);
+    }
 
-    button.addEventListener("click", togglePanel);
-    expandPanel();
-    DESKTOP_QUERY.addEventListener("change", expandPanel);
+    const tabNavButton = document.getElementById("tab-nav-toggle");
+    if (tabNavButton) {
+      tabNavButton.addEventListener("click", toggleTabNav);
+    }
+
+    syncDesktopPanels();
+    DESKTOP_QUERY.addEventListener("change", syncDesktopPanels);
   });
 })();

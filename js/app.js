@@ -24,17 +24,6 @@
       .join("");
   }
 
-  function renderResearchLinks(links) {
-    return links
-      .map(
-        (link, index) => `
-          ${index > 0 ? '<span class="publication-links__sep" aria-hidden="true">|</span>' : ""}
-          <span class="publication-links__label">${escapeHtml(link.label)}</span>
-        `
-      )
-      .join("");
-  }
-
   function renderResearchItem(publication) {
     const primaryLink = publication.links[0];
     const href = primaryLink?.url || "#";
@@ -45,7 +34,7 @@
         class="list-item list-item--publication"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="${escapeHtml(publication.title)} — ${escapeHtml(primaryLink?.label || "Paper")}"
+        aria-label="${escapeHtml(publication.title)}"
       >
         <div class="list-item__body">
           <h2 class="publication-item__title">${escapeHtml(publication.title)}</h2>
@@ -54,7 +43,6 @@
             <span class="publication-item__venue">
               <span>${escapeHtml(publication.venue)} (${escapeHtml(publication.year)})</span>
             </span>
-            <span class="publication-item__links">${renderResearchLinks(publication.links)}</span>
           </div>
         </div>
         <span class="list-item__arrow" aria-hidden="true">→</span>
