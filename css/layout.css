@@ -24,6 +24,7 @@
   align-items: center;
   padding: 0.6rem 0.75rem 0;
   font-size: var(--text-h1);
+  color: var(--color-brand-fg);
   outline: var(--border-width) solid var(--color-fg);
 }
 
@@ -46,12 +47,12 @@
   justify-content: center;
   width: 2.75rem;
   height: 2.75rem;
-  color: var(--color-fg);
+  color: var(--color-brand-fg);
 }
 
 .header__icon-btn:hover {
-  background: var(--color-accent-bg);
-  color: var(--color-accent-fg);
+  background: var(--color-nav-hover-bg);
+  color: var(--color-fg);
 }
 
 .panel-toggle {
