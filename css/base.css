@@ -108,8 +108,8 @@ img {
 }
 
 ::selection {
-  background: var(--color-accent-bg);
-  color: var(--color-accent-fg);
+  background: var(--color-selection-bg);
+  color: var(--color-selection-fg);
 }
 
 .link-underline,

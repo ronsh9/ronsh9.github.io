@@ -66,6 +66,9 @@
   --link-dot-thickness: 2px;
   --link-dot-len: 2px;
   --link-dot-gap: 3px;
+
+  --color-selection-bg: #67e8f9;
+  --color-selection-fg: #000000;
 }
 
 @media (min-width: 640px) {
