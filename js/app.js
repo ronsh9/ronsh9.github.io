@@ -112,7 +112,7 @@
   }
 
   function renderBio() {
-    const { intro, image, imageAlt, paragraphs } = config.bio;
+    const { intro, image, imageAlt, paragraphs = [] } = config.bio;
     const imageHtml = image
       ? `<figure class="bio__figure"><img class="bio__image" src="${escapeHtml(image)}" alt="${escapeHtml(imageAlt || "")}" loading="lazy"></figure>`
       : "";
@@ -359,7 +359,11 @@
 
   document.addEventListener("DOMContentLoaded", () => {
     migrateLegacyMarkup();
-    populatePage();
+    try {
+      populatePage();
+    } catch (err) {
+      console.error("Failed to populate page content:", err);
+    }
     initTabs();
   });
 })();
