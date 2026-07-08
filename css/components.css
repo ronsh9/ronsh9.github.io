@@ -465,16 +465,8 @@
 
 /* Right panel bio */
 .bio {
-  margin-bottom: 2.5rem;
-  min-height: 100vh;
+  margin-bottom: 1rem;
   text-transform: none;
-}
-
-@media (max-width: 767px) {
-  .bio {
-    min-height: 0;
-    margin-bottom: 1rem;
-  }
 }
 
 .bio p {
