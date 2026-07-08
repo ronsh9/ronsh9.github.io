@@ -8,16 +8,16 @@
   --color-placeholder-b: #e0e0e0;
   --color-placeholder-text: #999999;
 
-  /* 1) Brand text (Ron Shprints) + header icons (arrows, sun/moon) */
-  --color-brand-fg: #0369a1;
+  /* Brand text (Ron Shprints) + header icons (arrows, sun/moon) */
+  --color-brand-fg: var(--color-fg);
 
-  /* 2) Nav toolbar (Research/Bio/Potpourri) box fill, default + hover */
-  --color-nav-bg: #bfdbfe;
-  --color-nav-hover-bg: #93c5fd;
+  /* Nav toolbar (Research/Bio/Potpourri) box fill, default + hover */
+  --color-nav-bg: var(--color-bg);
+  --color-nav-hover-bg: var(--color-accent-bg);
 
-  /* 3) Link color */
-  --color-link: #075985;
-  --color-link-underline: color-mix(in srgb, var(--color-link) 55%, transparent);
+  /* Link color */
+  --color-link: color-mix(in srgb, var(--color-fg) 82%, transparent);
+  --color-link-underline: color-mix(in srgb, var(--color-fg) 62%, transparent);
 
   /* Venue tag (research items) */
   --color-venue-bg: color-mix(in srgb, var(--color-fg) 8%, var(--color-bg));
@@ -33,12 +33,12 @@
   --color-placeholder-b: #2a2a2a;
   --color-placeholder-text: #666666;
 
-  --color-brand-fg: #38bdf8;
-  --color-nav-bg: #0ea5e9;
-  --color-nav-hover-bg: #38bdf8;
+  --color-brand-fg: var(--color-fg);
+  --color-nav-bg: var(--color-bg);
+  --color-nav-hover-bg: var(--color-accent-bg);
 
-  --color-link: #22d3ee;
-  --color-link-underline: color-mix(in srgb, var(--color-link) 55%, transparent);
+  --color-link: color-mix(in srgb, var(--color-fg) 82%, transparent);
+  --color-link-underline: color-mix(in srgb, var(--color-fg) 62%, transparent);
 
   /* Venue tag: light gray-on-white reads poorly on a black page, so use a
      near-white chip with dark text instead. */

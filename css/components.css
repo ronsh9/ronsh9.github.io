@@ -27,12 +27,12 @@
 
 .tab-nav__item:hover {
   background: var(--color-nav-hover-bg);
-  color: var(--color-fg);
+  color: var(--color-accent-fg);
 }
 
 .tab-nav__item.is-active {
   background: var(--color-nav-hover-bg);
-  color: var(--color-fg);
+  color: var(--color-accent-fg);
 }
 
 @media (max-width: 767px) {
@@ -64,7 +64,7 @@
 
   .site[data-mobile-view="tab"] .tab-nav__item.is-active {
     background: var(--color-nav-hover-bg);
-    color: var(--color-fg);
+    color: var(--color-accent-fg);
   }
 }
 
@@ -83,7 +83,7 @@
 
   .tab-nav__item.is-active {
     background: var(--color-nav-hover-bg);
-    color: var(--color-fg);
+    color: var(--color-accent-fg);
   }
 }
 
@@ -266,7 +266,7 @@
 }
 
 .list-item:hover .publication-item__authors {
-  color: var(--color-fg);
+  color: var(--color-accent-fg);
 }
 
 .publication-author {
@@ -288,8 +288,12 @@
   bottom: -0.05em;
   width: 0%;
   height: 2px;
-  background: var(--color-fg);
+  background: currentColor;
   transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.list-item:hover .publication-author--self {
+  color: var(--color-accent-fg);
 }
 
 .list-item:hover .publication-author--self::after {
@@ -330,7 +334,7 @@
 
 .list-item:hover {
   background: var(--color-nav-hover-bg);
-  color: var(--color-fg);
+  color: var(--color-accent-fg);
 }
 
 .list-item:hover .list-item__arrow {

@@ -52,7 +52,7 @@
 
 .header__icon-btn:hover {
   background: var(--color-nav-hover-bg);
-  color: var(--color-fg);
+  color: var(--color-accent-fg);
 }
 
 .panel-toggle {
