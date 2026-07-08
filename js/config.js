@@ -48,6 +48,7 @@ const SITE_CONFIG = {
     items: [
       {
         title: "Few-step Cofolding with All-Atom Flow Maps",
+        image: "assets/research_items/decaf.png",
         authors: [
           "Gianluca Scarpellini",
           "Ron Shprints",
@@ -69,6 +70,7 @@ const SITE_CONFIG = {
       },
       {
         title: "FragmentFlow: Scalable Transition State Generation for Large Molecules",
+        image: "assets/research_items/fragmentflow.png",
         authors: [
           "Ron Shprints",
           "Peter Holderrieth",

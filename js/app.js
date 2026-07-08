@@ -24,6 +24,20 @@
       .join("");
   }
 
+  function renderResearchMedia(publication) {
+    const src = publication.image;
+    if (!src) {
+      return `<div class="publication-item__media publication-item__media--placeholder" aria-hidden="true"></div>`;
+    }
+
+    const isVideo = /\.(mp4|webm|mov)$/i.test(src);
+    const mediaEl = isVideo
+      ? `<video class="publication-item__media-img" src="${escapeHtml(src)}" autoplay muted loop playsinline></video>`
+      : `<img class="publication-item__media-img" src="${escapeHtml(src)}" alt="${escapeHtml(publication.imageAlt || publication.title)}" loading="lazy">`;
+
+    return `<div class="publication-item__media">${mediaEl}</div>`;
+  }
+
   function renderResearchItem(publication) {
     const primaryLink = publication.links[0];
     const href = primaryLink?.url || "#";
@@ -36,14 +50,17 @@
         rel="noopener noreferrer"
         aria-label="${escapeHtml(publication.title)}"
       >
-        <div class="list-item__body">
-          <h2 class="publication-item__title">${escapeHtml(publication.title)}</h2>
-          <p class="publication-item__authors">${renderResearchAuthors(publication.authors)}</p>
-          <div class="publication-item__footer">
-            <span class="publication-item__venue">
-              <span>${escapeHtml(publication.venue)} (${escapeHtml(publication.year)})</span>
-            </span>
+        <div class="publication-item__content">
+          <div class="list-item__body">
+            <h2 class="publication-item__title">${escapeHtml(publication.title)}</h2>
+            <p class="publication-item__authors">${renderResearchAuthors(publication.authors)}</p>
+            <div class="publication-item__footer">
+              <span class="publication-item__venue">
+                <span>${escapeHtml(publication.venue)} (${escapeHtml(publication.year)})</span>
+              </span>
+            </div>
           </div>
+          ${renderResearchMedia(publication)}
         </div>
         <span class="list-item__arrow" aria-hidden="true">→</span>
       </a>
