@@ -22,9 +22,10 @@
   align-items: center;
   height: auto;
   line-height: 1;
-  font-size: 1.35rem;
-  /* Caps sit high in the Source Serif em-box; nudge down for optical center. */
-  transform: translateY(0.1em);
+  /* Slightly smaller than --text-nav so labels have room; Source Serif caps
+     sit low in the em-box, so nudge up for optical vertical center. */
+  font-size: calc(var(--text-nav) * 0.78);
+  transform: translateY(-0.22em);
   font-weight: 320;
   color: color-mix(in srgb, var(--color-fg) 42%, transparent);
   background: transparent;
@@ -76,7 +77,8 @@
   }
 
   .tab-nav__item {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
+    transform: translateY(-0.12em);
   }
 }
 
