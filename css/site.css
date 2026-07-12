@@ -424,18 +424,15 @@
         top: 0.85rem;
         right: 1rem;
         z-index: 40;
-        width: 2.4rem;
-        height: 2.4rem;
-        border-radius: 999px;
-        border: 1px solid var(--glass-border);
-        background: var(--glass);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
+        width: 2rem;
+        height: 2rem;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
         cursor: pointer;
         color: var(--fg);
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        overflow: hidden;
         transition: opacity 0.35s var(--ease);
       }
 
@@ -444,9 +441,45 @@
         pointer-events: none;
       }
 
-      .theme-toggle svg {
-        width: 1.05rem;
-        height: 1.05rem;
+      .theme-toggle__icon {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+          transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .theme-toggle__icon svg {
+        width: 1.15rem;
+        height: 1.15rem;
+      }
+
+      .theme-toggle__icon--moon svg {
+        width: 1.18rem;
+        height: 1.18rem;
+      }
+
+      .theme-toggle__icon--sun {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      }
+
+      .theme-toggle__icon--moon {
+        opacity: 0;
+        transform: rotate(-60deg) scale(0.4);
+      }
+
+      [data-theme="dark"] .theme-toggle__icon--sun {
+        opacity: 0;
+        transform: rotate(60deg) scale(0.4);
+      }
+
+      [data-theme="dark"] .theme-toggle__icon--moon {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
       }
 
       /* ─── Sections shell ─── */
