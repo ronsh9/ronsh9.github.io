@@ -249,6 +249,28 @@
     scrollToTop(document.querySelector(".panel-right"));
   }
 
+  function updateTabInk() {
+    const nav = document.querySelector(".tab-nav");
+    const ink = nav?.querySelector(".tab-nav__ink");
+    if (!nav || !ink) return;
+
+    const active = nav.querySelector(".tab-nav__item.is-active");
+    const navStyle = getComputedStyle(nav);
+    const navHidden = navStyle.display === "none" || navStyle.visibility === "hidden";
+
+    if (!active || navHidden) {
+      ink.classList.remove("is-visible");
+      ink.style.width = "0px";
+      return;
+    }
+
+    const navBox = nav.getBoundingClientRect();
+    const box = active.getBoundingClientRect();
+    ink.style.left = `${box.left - navBox.left + nav.scrollLeft}px`;
+    ink.style.width = `${box.width}px`;
+    ink.classList.add("is-visible");
+  }
+
   function setActiveTab(activeTab) {
     document.querySelectorAll(".tab-nav__item").forEach((tab) => {
       const tabKey = canonicalTab(tab.dataset.tab) || tab.dataset.tab;
@@ -263,6 +285,7 @@
     });
 
     updateMobileView(activeTab);
+    requestAnimationFrame(updateTabInk);
   }
 
   function updateUrl(tabId) {
@@ -319,6 +342,25 @@
     MOBILE_QUERY.addEventListener("change", () => {
       applyView(getTabFromUrl());
     });
+
+    window.addEventListener("resize", () => {
+      requestAnimationFrame(updateTabInk);
+    });
+
+    const tabNav = document.querySelector(".tab-nav");
+    if (tabNav && typeof ResizeObserver !== "undefined") {
+      new ResizeObserver(() => requestAnimationFrame(updateTabInk)).observe(tabNav);
+    }
+
+    const site = document.querySelector(".site");
+    if (site && typeof MutationObserver !== "undefined") {
+      new MutationObserver(() => requestAnimationFrame(updateTabInk)).observe(site, {
+        attributes: true,
+        attributeFilter: ["data-right-panel", "data-tab-nav", "data-mobile-view"],
+      });
+    }
+
+    requestAnimationFrame(updateTabInk);
   }
 
   function populatePage() {
