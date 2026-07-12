@@ -11,6 +11,7 @@
   gap: 1.75rem;
   padding: 0 0.75rem;
   background: var(--color-bg);
+  border-top: var(--border-width) solid var(--color-fg);
   border-bottom: var(--border-width) solid var(--color-fg);
 }
 
