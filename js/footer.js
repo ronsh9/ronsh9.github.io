@@ -13,21 +13,18 @@
       .map(
         (item) => `
           <a
-            class="footer__social-link"
             href="${escapeHtml(item.url)}"
             aria-label="${escapeHtml(item.label)} Link"
             target="_blank"
             rel="noopener noreferrer"
-          >
-            <h4>${escapeHtml(item.label)}</h4>
-          </a>
+          >${escapeHtml(item.label)}</a>
         `
       )
       .join("");
 
     return `
-      <span class="footer__email"><h4>${escapeHtml(SITE_CONFIG.meta.email)}</h4></span>
-      <div class="footer__social-links">${links}</div>
+      <h4>${escapeHtml(SITE_CONFIG.meta.email)}</h4>
+      <div class="footer__links">${links}</div>
     `;
   }
 

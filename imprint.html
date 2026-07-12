@@ -4,77 +4,66 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Imprint">
-    <title>Imprint</title>
+    <title>Imprint — Ron Shprints</title>
 
-    <link rel="icon" href="favicon.ico" sizes="32x32">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="favicon.png" type="image/png" sizes="32x32">
-    <link rel="apple-touch-icon" href="assets/icon/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/assets/icon/apple-touch-icon.png" sizes="180x180">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/variables.css?v=20260712k">
-    <link rel="stylesheet" href="css/base.css?v=20260712k">
-    <link rel="stylesheet" href="css/layout.css?v=20260712k">
-    <link rel="stylesheet" href="css/components.css?v=20260712k">
-    <script src="js/theme.js?v=20260712k"></script>
+    <link rel="stylesheet" href="css/site.css?v=20260712m">
+    <script src="js/theme.js?v=20260712m"></script>
   </head>
   <body>
-    <div class="site site--simple">
-      <header class="header">
-        <a class="header__brand" href="./">
-          <h1>Ron</h1>
-          <h1>Shprints</h1>
-        </a>
-        <div class="header__actions">
-          <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode">
-            <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
-                <circle cx="12" cy="12" r="4"></circle>
-                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
-              </svg>
-            </span>
-            <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-              </svg>
-            </span>
-          </button>
-        </div>
-      </header>
+    <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Toggle theme">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+      </svg>
+    </button>
 
-      <main class="imprint-page">
-        <h2>Imprint</h2>
-        <p>
-          Replace this page with your legal information: name, address, contact details,
-          and any other disclosures required in your jurisdiction.
-        </p>
-        <p><a href="./" class="link-underline">← Back to home</a></p>
+    <div class="site" id="site">
+      <div class="orbit" id="orbit" aria-label="Site navigation">
+        <button class="orbit__hit" id="orbit-toggle" type="button" aria-expanded="false" aria-label="Open navigation">
+          <span class="orbit__glass" aria-hidden="true">
+            <svg class="orbit__chevron" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 10l6 6 6-6"></path>
+            </svg>
+          </span>
+        </button>
+        <a class="orbit__brand" href="./">Ron Shprints</a>
+        <nav class="orbit__items" id="orbit-items" aria-label="Sections">
+          <div class="orbit__item"><a href="./#research">Research</a></div>
+          <div class="orbit__item"><a href="./#bio">Bio</a></div>
+          <div class="orbit__item"><a href="./#potpourri">Potpourri</a></div>
+        </nav>
+      </div>
+
+      <div class="scrim" id="scrim" hidden></div>
+
+      <main class="info-page">
+        <div class="info-page__inner">
+          <h1 class="info-page__title">Imprint</h1>
+          <p>
+            Replace this page with your legal information: name, address, contact details,
+            and any other disclosures required in your jurisdiction.
+          </p>
+        </div>
       </main>
 
-      <footer class="footer">
+      <footer class="footer" id="footer">
         <div class="footer__left">
           <h4 id="footer-meta" class="footer__meta"></h4>
-          <a class="footer__info" href="info.html">
-            <h4>Info</h4>
-          </a>
+          <a class="footer__info" href="info.html"><h4>Info</h4></a>
         </div>
         <div id="social-links" class="footer__social"></div>
       </footer>
     </div>
 
-    <script src="js/config.js?v=20260712k"></script>
-    <script src="js/footer.js?v=20260712k"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const brand = document.querySelector(".header__brand");
-        if (brand && typeof SITE_CONFIG !== "undefined") {
-          brand.innerHTML = `
-            <h1>${SITE_CONFIG.brand.firstName}</h1>
-            <h1>${SITE_CONFIG.brand.lastName}</h1>
-          `;
-        }
-      });
-    </script>
+    <script src="js/config.js?v=20260712m"></script>
+    <script src="js/footer.js?v=20260712m"></script>
+    <script src="js/orbit.js?v=20260712m"></script>
   </body>
 </html>

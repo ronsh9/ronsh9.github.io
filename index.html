@@ -3,101 +3,185 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Ron Shprints">
+    <meta name="description" content="Official Website of Ron Shprints">
     <title>Ron Shprints</title>
 
-    <link rel="icon" href="favicon.ico" sizes="32x32">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="favicon.png" type="image/png" sizes="32x32">
-    <link rel="apple-touch-icon" href="assets/icon/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/assets/icon/apple-touch-icon.png" sizes="180x180">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/variables.css?v=20260712k">
-    <link rel="stylesheet" href="css/base.css?v=20260712k">
-    <link rel="stylesheet" href="css/layout.css?v=20260712k">
-    <link rel="stylesheet" href="css/components.css?v=20260712k">
-    <script src="js/theme.js?v=20260712k"></script>
-    <script src="js/panel.js?v=20260712k"></script>
+    <link rel="stylesheet" href="css/site.css?v=20260712m">
+    <script src="js/theme.js?v=20260712m"></script>
   </head>
   <body>
-    <div class="site">
-      <header class="header">
-        <a id="brand" class="header__brand" href="./">
-          <h1>Ron</h1>
-          <h1>Shprints</h1>
-        </a>
-        <div class="header__actions">
-          <button
-            id="tab-nav-toggle"
-            class="header__icon-btn tab-nav-toggle"
-            type="button"
-            aria-label="Hide navigation"
-            aria-expanded="true"
-          >
-            <span class="tab-nav-toggle__icon tab-nav-toggle__icon--collapse" aria-hidden="true">&lt;&lt;</span>
-            <span class="tab-nav-toggle__icon tab-nav-toggle__icon--expand" aria-hidden="true">&gt;&gt;</span>
-          </button>
-          <button
-            id="panel-toggle"
-            class="header__icon-btn panel-toggle"
-            type="button"
-            aria-label="Hide right panel"
-            aria-expanded="true"
-          >
-            <span class="panel-toggle__icon panel-toggle__icon--collapse" aria-hidden="true">&gt;&gt;</span>
-            <span class="panel-toggle__icon panel-toggle__icon--expand" aria-hidden="true">&lt;&lt;</span>
-          </button>
-          <button id="theme-toggle" class="header__icon-btn theme-toggle" type="button" aria-label="Switch to dark mode">
-            <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
-                <circle cx="12" cy="12" r="4"></circle>
-                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
-              </svg>
-            </span>
-            <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-              </svg>
-            </span>
-          </button>
-        </div>
+    <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Toggle theme">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+      </svg>
+    </button>
 
-        <nav class="tab-nav" aria-label="Content sections">
-          <a href="#research" class="tab-nav__item" data-tab="research">Research</a>
-          <a href="#bio" class="tab-nav__item" data-tab="bio">Bio</a>
-          <a href="#potpourri" class="tab-nav__item" data-tab="potpourri">Potpourri</a>
-          <span class="tab-nav__ink" aria-hidden="true"></span>
+    <div class="site" id="site" data-view="home" data-orbit-mode="local">
+      <div class="orbit" id="orbit" aria-label="Site navigation">
+        <button class="orbit__hit" id="orbit-toggle" type="button" aria-expanded="false" aria-label="Open navigation">
+          <span class="orbit__glass" aria-hidden="true">
+            <svg class="orbit__chevron" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 10l6 6 6-6"></path>
+            </svg>
+          </span>
+        </button>
+        <a class="orbit__brand" href="#home" data-nav="home">Ron Shprints</a>
+        <nav class="orbit__items" id="orbit-items" aria-label="Sections">
+          <div class="orbit__item"><a href="#research" data-nav="research">Research</a></div>
+          <div class="orbit__item"><a href="#bio" data-nav="bio">Bio</a></div>
+          <div class="orbit__item"><a href="#potpourri" data-nav="potpourri">Potpourri</a></div>
         </nav>
-      </header>
+      </div>
 
-      <main class="main">
-        <section class="panel-left">
-          <div id="panel-research" class="panel-content" data-panel="research" hidden></div>
-          <div id="panel-bio" class="panel-content" data-panel="bio" hidden></div>
-          <div id="panel-potpourri" class="panel-content" data-panel="potpourri" hidden></div>
-        </section>
+      <div class="scrim" id="scrim" hidden></div>
 
-        <aside class="panel-right">
-          <div id="bio-content"></div>
-          <div id="newsletter-form"></div>
-          <div id="contacts" class="contacts"></div>
-        </aside>
+      <main class="home" id="home">
+        <h1 class="home__name">Ron Shprints</h1>
+        <div class="home__photo">
+          <img src="assets/images/IMG_1064.JPG" alt="Ron Shprints">
+        </div>
+        <p class="home__bio">
+          I'm a ML researcher working on drug discovery and molecular design. Generally, I'm interested in facilitating the process in which we simulate materials, probe their properties, test them in wet labs, and develop them into useful products.
+        </p>
       </main>
 
-      <footer class="footer">
+      <section class="section section--research" aria-label="Research">
+        <header class="section__header">
+          <h2 class="section__title">Research</h2>
+          <p class="section__lede">
+            For the full list of publications, please visit the
+            <a href="https://scholar.google.com/citations?hl=en&user=xGMLzr4AAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener noreferrer">Google Scholar page</a>.
+          </p>
+        </header>
+
+        <div class="research-list">
+          <article class="project-card" tabindex="0">
+            <div class="project-card__body">
+              <p class="project-card__meta">New · 2026</p>
+              <h3 class="project-card__title">Few-step Cofolding with All-Atom Flow Maps</h3>
+              <p class="project-card__authors">
+                Gianluca Scarpellini, <span class="self">Ron Shprints</span>, Peter Holderrieth, Juno Nam, Pranav Murugan, Rafael Gómez-Bombarelli, Tommi Jaakkola, Maruan Al-Shedivat, Nicholas Matthew Boffi, Avishek Joey Bose
+              </p>
+              <div class="project-card__links">
+                <a href="https://arxiv.org/abs/2606.08375" target="_blank" rel="noopener noreferrer">Preprint</a>
+                <a href="https://github.com/genesistherapeutics/decaf" target="_blank" rel="noopener noreferrer">Code</a>
+              </div>
+            </div>
+            <div class="project-card__media">
+              <img src="assets/research_items/decaf.png" alt="Figure for Few-step Cofolding with All-Atom Flow Maps">
+            </div>
+          </article>
+
+          <article class="project-card" tabindex="0">
+            <div class="project-card__body">
+              <p class="project-card__meta">2026</p>
+              <h3 class="project-card__title">FragmentFlow: Scalable Transition State Generation for Large Molecules</h3>
+              <p class="project-card__authors">
+                <span class="self">Ron Shprints</span>, Peter Holderrieth, Juno Nam, Rafael Gómez-Bombarelli, Tommi Jaakkola
+              </p>
+              <p class="project-card__venue">AI4Mat and FM4Science Workshops at the 2026 International Conference on Learning Representations</p>
+              <div class="project-card__links">
+                <a href="https://arxiv.org/abs/2602.02310" target="_blank" rel="noopener noreferrer">Paper</a>
+                <a href="https://github.com/ronsh9/FragmentFlow" target="_blank" rel="noopener noreferrer">Code</a>
+              </div>
+            </div>
+            <div class="project-card__media">
+              <img src="assets/research_items/fragmentflow.png" alt="Figure for FragmentFlow">
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--bio" aria-label="Bio">
+        <header class="section__header">
+          <h2 class="section__title">Bio</h2>
+        </header>
+
+        <div class="bio-page">
+          <div class="bio-block">
+            <h3 class="bio-block__title">Education</h3>
+            <p>
+              I obtained my MEng in Computer Science from MIT. There, I worked in Professor
+              <a href="https://people.csail.mit.edu/tommi/" class="link-underline" target="_blank" rel="noopener noreferrer">Tommi Jaakkola</a>'s group and collaborated closely with
+              <a href="https://www.peterholderrieth.com/" class="link-underline" target="_blank" rel="noopener noreferrer">Peter Holderrieth</a>
+              and
+              <a href="https://junonam.com/" class="link-underline" target="_blank" rel="noopener noreferrer">Juno Nam</a>.
+            </p>
+            <p>
+              Before that, I graduated from MIT with a B.Sc. in Mathematics and in Computer Science and Engineering. I started my research journey as an undergraduate student at
+              <a href="https://jensenlab.mit.edu/" class="link-underline" target="_blank" rel="noopener noreferrer">Professor Klavs Jensen</a>'s group working with (now Professor)
+              <a href="https://www.zahrtgroup.org/" class="link-underline" target="_blank" rel="noopener noreferrer">Andrew Zahrt</a>.
+              This experience convinced me that the recent advances in ML can be quite impactful on the way we do science, so I decided to devote the rest of my undergraduate studies to explore that route. I continued to
+              <a href="https://coley.mit.edu/" class="link-underline" target="_blank" rel="noopener noreferrer">Professor Connor Coley</a>'s group, where I worked closely with (soon Professor)
+              <a href="https://wenhao-gao.github.io/" class="link-underline" target="_blank" rel="noopener noreferrer">Wenhao Gao</a>
+              for 2 wonderful years. During my last year of college, I worked on video generative models with
+              <a href="https://people.csail.mit.edu/kaiming/" class="link-underline" target="_blank" rel="noopener noreferrer">Professor Kaiming He</a>
+              and on sampling rare events with
+              <a href="https://stephenbates19.github.io/" class="link-underline" target="_blank" rel="noopener noreferrer">Professor Stephen Bates</a>.
+              After graduating, I interned at
+              <a href="https://voltaris.ai/" class="link-underline" target="_blank" rel="noopener noreferrer">Voltaris AI</a>,
+              where I worked on molecular simulation.
+            </p>
+          </div>
+
+          <div class="bio-block">
+            <h3 class="bio-block__title">Teaching</h3>
+            <ul>
+              <li>Teaching Assistant for Modeling with Machine Learning (6.C01/6.C011), MIT, Spring 2026.</li>
+              <li>Teaching Assistant for <a href="https://diffusion.csail.mit.edu/2026/index.html" class="link-underline" target="_blank" rel="noopener noreferrer">Introduction to Flow Matching and Diffusion Models (6.S184)</a>, MIT, Winter 2026.</li>
+              <li>Teaching Assistant for <a href="https://gradml.mit.edu/" class="link-underline" target="_blank" rel="noopener noreferrer">Graduate Machine Learning (6.7900)</a>, MIT, Fall 2025.</li>
+              <li>Instructor for <a href="https://moldesign.github.io" class="link-underline" target="_blank" rel="noopener noreferrer">Machine Learning and Molecular Design (6.S085)</a>, MIT, Winter 2024.</li>
+              <li>Teaching Assistant for Fundamentals of Statistics (18.650), MIT, Fall 2023.</li>
+            </ul>
+          </div>
+
+          <div class="bio-block">
+            <h3 class="bio-block__title">Fun</h3>
+            <p>
+              I enjoy swimming quite a bit, but ever since I graduated from college and I no longer live 5 minutes away from an olympic pool, I mostly replaced it with some combination of weightlifting and different forms of cardio. I'm generally a big sports fan: my favorites are basketball and soccer, but you probably can't find a sport that I wouldn't enjoy watching/playing/doing. I also like photography, playing strategic games, and DJing.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--potpourri" aria-label="Potpourri">
+        <header class="section__header">
+          <h2 class="section__title">Potpourri</h2>
+          <p class="section__lede">A small collection of things outside research.</p>
+        </header>
+
+        <div class="potpourri-grid">
+          <article class="pot-card">
+            <div class="pot-card__caption">
+              <h3 class="pot-card__name">my favorite spot in boston</h3>
+              <p class="pot-card__date">2026</p>
+            </div>
+            <div class="pot-card__media">
+              <img src="assets/potpourri/boston_fav.JPG" alt="Favorite spot in Boston">
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <footer class="footer" id="footer">
         <div class="footer__left">
           <h4 id="footer-meta" class="footer__meta"></h4>
-          <a class="footer__info" href="info.html?v=20260712k">
-            <h4>Info</h4>
-          </a>
+          <a class="footer__info" href="info.html"><h4>Info</h4></a>
         </div>
         <div id="social-links" class="footer__social"></div>
       </footer>
     </div>
 
-    <script src="js/config.js?v=20260712k"></script>
-    <script src="js/footer.js?v=20260712k"></script>
-    <script src="js/app.js?v=20260712k"></script>
+    <script src="js/config.js?v=20260712m"></script>
+    <script src="js/footer.js?v=20260712m"></script>
+    <script src="js/orbit.js?v=20260712m"></script>
   </body>
 </html>

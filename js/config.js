@@ -7,7 +7,7 @@ const SITE_CONFIG = {
     title: "Ron Shprints",
     description: "Official Website of Ron Shprints",
     copyright: "© 2025-2026 Ron Shprints",
-    lastUpdated: "26 JUN 2026",
+    lastUpdated: "12 JUL 2026",
     email: "ronsh at mit dot edu",
   },
 
@@ -25,7 +25,7 @@ const SITE_CONFIG = {
 
   bio: {
     intro:
-      "I'm a ML researcher working on drug discovery and molecular design. Generally, I'n interested in facilitating the process in which we simulate materials, probe their properties, test them in wet labs, and develop them into useful products.",
+      "I'm a ML researcher working on drug discovery and molecular design. Generally, I'm interested in facilitating the process in which we simulate materials, probe their properties, test them in wet labs, and develop them into useful products.",
     image: "assets/images/IMG_1064.JPG",
     imageAlt: "Ron Shprints",
   },
@@ -75,7 +75,7 @@ const SITE_CONFIG = {
           "Tommi Jaakkola",
         ],
         venue:
-          "AI4Mat and FM4Science Workshops at the International Conference on Learning Representations",
+          "AI4Mat and FM4Science Workshops at the 2026 International Conference on Learning Representations",
         year: "2026",
         links: [
           { label: "Paper", url: "https://arxiv.org/abs/2602.02310" },
@@ -96,8 +96,8 @@ const SITE_CONFIG = {
 
   bioPanel: `
     <h2 class="bio-panel__title">Education</h2>
-    <p>I obtained my MEng in Computer Science from MIT. There, I worked in Prof. <a href="https://people.csail.mit.edu/tommi/" class="link-underline" target="_blank" rel="noopener noreferrer">Tommi Jaakkola</a>'s group and collaborated closely with <a href="https://www.peterholderrieth.com/" class="link-underline" target="_blank" rel="noopener noreferrer">Peter Holderrieth</a> and <a href="https://junonam.com/" class="link-underline" target="_blank" rel="noopener noreferrer">Juno Nam</a>.</p>
-    <p>Before that, I graduated from MIT with a B.Sc. in Mathematics and in Computer Science and Engineering. I started my research journey as an undergraduate student at <a href="https://jensenlab.mit.edu/" class="link-underline" target="_blank" rel="noopener noreferrer">Professor Klavs Jensen</a>'s group working with (now Professor) <a href="https://www.zahrtgroup.org/" class="link-underline" target="_blank" rel="noopener noreferrer">Andrew Zahrt</a>. This experience convinced me that the recent advances in ML can be quite impactful on the way we do science, so I decided to devote the rest of my undergraduate studies to explore that route. I continued to <a href="https://coley.mit.edu/" class="link-underline" target="_blank" rel="noopener noreferrer">Professor Connor Coley</a>'s group, where I worked closely with (soon Professor) <a href="https://wenhao-gao.github.io/" class="link-underline" target="_blank" rel="noopener noreferrer">Wenhao Gao</a> for 2 wondeful years. During my last year of college, I worked on video generative models with <a href="https://people.csail.mit.edu/kaiming/" class="link-underline" target="_blank" rel="noopener noreferrer">Professor Kaiming He</a> and on sampling rare events with <a href="https://stephenbates19.github.io/" class="link-underline" target="_blank" rel="noopener noreferrer">Professor Stephen Bates</a>. After graduating, I interned at <a href="https://voltaris.ai/" class="link-underline" target="_blank" rel="noopener noreferrer">Voltaris AI</a>, where I worked on molecular simulation.</p>
+    <p>I obtained my MEng in Computer Science from MIT. There, I worked in Professor <a href="https://people.csail.mit.edu/tommi/" class="link-underline" target="_blank" rel="noopener noreferrer">Tommi Jaakkola</a>'s group and collaborated closely with <a href="https://www.peterholderrieth.com/" class="link-underline" target="_blank" rel="noopener noreferrer">Peter Holderrieth</a> and <a href="https://junonam.com/" class="link-underline" target="_blank" rel="noopener noreferrer">Juno Nam</a>.</p>
+    <p>Before that, I graduated from MIT with a B.Sc. in Mathematics and in Computer Science and Engineering. I started my research journey as an undergraduate student at <a href="https://jensenlab.mit.edu/" class="link-underline" target="_blank" rel="noopener noreferrer">Professor Klavs Jensen</a>'s group working with (now Professor) <a href="https://www.zahrtgroup.org/" class="link-underline" target="_blank" rel="noopener noreferrer">Andrew Zahrt</a>. This experience convinced me that the recent advances in ML can be quite impactful on the way we do science, so I decided to devote the rest of my undergraduate studies to explore that route. I continued to <a href="https://coley.mit.edu/" class="link-underline" target="_blank" rel="noopener noreferrer">Professor Connor Coley</a>'s group, where I worked closely with (soon Professor) <a href="https://wenhao-gao.github.io/" class="link-underline" target="_blank" rel="noopener noreferrer">Wenhao Gao</a> for 2 wonderful years. During my last year of college, I worked on video generative models with <a href="https://people.csail.mit.edu/kaiming/" class="link-underline" target="_blank" rel="noopener noreferrer">Professor Kaiming He</a> and on sampling rare events with <a href="https://stephenbates19.github.io/" class="link-underline" target="_blank" rel="noopener noreferrer">Professor Stephen Bates</a>. After graduating, I interned at <a href="https://voltaris.ai/" class="link-underline" target="_blank" rel="noopener noreferrer">Voltaris AI</a>, where I worked on molecular simulation.</p>
     <h2 class="bio-panel__title">Teaching</h2>
     <ul>
       <li>Teaching Assistant for Modeling with Machine Learning (6.C01/6.C011), MIT, Spring 2026.</li>
