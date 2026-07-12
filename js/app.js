@@ -266,10 +266,18 @@
 
     const navBox = nav.getBoundingClientRect();
     const box = active.getBoundingClientRect();
-    /* Sit just under the label so the title stays optically centered in the bar. */
+
+    /* Prefer the glyph box so padding on the tab doesn't push the ink too low. */
+    const range = document.createRange();
+    range.selectNodeContents(active);
+    const textBox = range.getBoundingClientRect();
+    const underlineTop = textBox.height > 0 ? textBox.bottom : box.bottom;
+
+    const top = Math.min(underlineTop - navBox.top + 4, navBox.height - 6);
+
     ink.style.left = `${box.left - navBox.left + nav.scrollLeft}px`;
     ink.style.width = `${box.width}px`;
-    ink.style.top = `${box.bottom - navBox.top + 3}px`;
+    ink.style.top = `${Math.max(0, top)}px`;
     ink.classList.add("is-visible");
   }
 

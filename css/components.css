@@ -1,10 +1,11 @@
 /* Tab navigation — sliding ink underline */
 .tab-nav {
-  position: absolute;
+  position: relative; /* must contain .tab-nav__ink (absolute) */
   top: 0;
   left: 0;
   right: 0;
   z-index: 40;
+  box-sizing: border-box;
   height: var(--tab-height);
   display: flex;
   align-items: center;
@@ -20,12 +21,12 @@
   z-index: 1;
   display: flex;
   align-items: center;
-  height: auto;
+  box-sizing: border-box;
+  /* More padding below the glyphs reserves room for the underline and
+     keeps the label block optically centered in the taller bar. */
+  padding: 0.2rem 0 0.7rem;
   line-height: 1;
-  /* Slightly smaller than --text-nav so labels have room; Source Serif caps
-     sit low in the em-box, so nudge up for optical vertical center. */
-  font-size: calc(var(--text-nav) * 0.78);
-  transform: translateY(-0.22em);
+  font-size: 1.25rem;
   font-weight: 320;
   color: color-mix(in srgb, var(--color-fg) 42%, transparent);
   background: transparent;
@@ -58,6 +59,7 @@
     opacity 0.2s;
   pointer-events: none;
   opacity: 0;
+  z-index: 2;
 }
 
 .tab-nav__ink.is-visible {
@@ -66,7 +68,8 @@
 
 @media (max-width: 767px) {
   .tab-nav {
-    position: static;
+    /* Keep relative so the ink positions against this bar, not the header */
+    position: relative;
     grid-column: 1 / -1;
     grid-row: 2;
     width: auto;
@@ -78,7 +81,7 @@
 
   .tab-nav__item {
     font-size: 1.05rem;
-    transform: translateY(-0.12em);
+    padding: 0.2rem 0 0.6rem;
   }
 }
 
