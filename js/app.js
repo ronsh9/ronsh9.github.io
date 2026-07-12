@@ -266,8 +266,10 @@
 
     const navBox = nav.getBoundingClientRect();
     const box = active.getBoundingClientRect();
+    /* Sit just under the label so the title stays optically centered in the bar. */
     ink.style.left = `${box.left - navBox.left + nav.scrollLeft}px`;
     ink.style.width = `${box.width}px`;
+    ink.style.top = `${box.bottom - navBox.top + 3}px`;
     ink.classList.add("is-visible");
   }
 
