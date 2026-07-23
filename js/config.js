@@ -7,7 +7,7 @@ const SITE_CONFIG = {
     title: "Ron Shprints",
     description: "Official Website of Ron Shprints",
     copyright: "© 2025-2026 Ron Shprints",
-    lastUpdated: "12 JUL 2026",
+    lastUpdated: "23 JUL 2026",
     email: "ronsh at mit dot edu",
   },
 
@@ -87,10 +87,21 @@ const SITE_CONFIG = {
 
   potpourri: [
     {
-      name: "my favorite spot in boston",
+      name: "My favorite spot in Boston",
       date: "2026",
       url: "#",
       image: "assets/potpourri/boston_fav.JPG",
+    },
+    {
+      name: "From The Hunting of the Snark",
+      date: "Lewis Carroll",
+      url: "#",
+      quote: [
+        "In the midst of the word he was trying to say,",
+        "In the midst of his laughter and glee,",
+        "He had softly and suddenly vanished away—",
+        "For the Snark <em>was</em> a Boojum, you see.",
+      ],
     },
   ],
 

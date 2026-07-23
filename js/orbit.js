@@ -1,64 +1,41 @@
 /**
- * Glass arc navigation + hash-based section views.
- * Index uses data-orbit-mode="local". Other pages link to ./#section.
+ * Responsive top navigation + hash-based section views.
+ * Wide: always-visible glass bar. Narrow: expandable vertical menu.
  */
 (function () {
   const VIEWS = ["home", "research", "bio", "potpourri"];
+  const NARROW_MQ = window.matchMedia("(max-width: 860px)");
 
-  function initOrbit() {
+  function initNav() {
     const site = document.getElementById("site");
-    const orbit = document.getElementById("orbit");
-    const toggle = document.getElementById("orbit-toggle");
+    const toggle = document.getElementById("nav-toggle");
     const scrim = document.getElementById("scrim");
     const footer = document.getElementById("footer");
-    if (!site || !orbit || !toggle || !scrim) return;
+    if (!site || !scrim) return;
 
-    const items = [...document.querySelectorAll(".orbit__item")];
     const localNav = site.dataset.orbitMode === "local";
 
     function syncFooterHeight() {
-      if (!footer) return;
+      // Keep the CSS-defined thin footer; only bump for the stacked mobile footer.
       document.documentElement.style.setProperty(
         "--footer-h",
-        `${footer.getBoundingClientRect().height}px`
+        isNarrow() ? "4rem" : "2rem"
       );
     }
 
-    function layoutOrbitItems() {
-      if (!site.classList.contains("is-nav-open")) return;
-
-      const w = orbit.clientWidth || window.innerWidth;
-      const cssH = getComputedStyle(document.documentElement).getPropertyValue("--arc-h").trim();
-      const probe = document.createElement("div");
-      probe.style.cssText = `position:absolute;visibility:hidden;height:${cssH}`;
-      document.body.appendChild(probe);
-      const h = probe.offsetHeight || orbit.clientHeight;
-      probe.remove();
-
-      const cx = w / 2;
-      const rx = w * 0.42;
-      const ry = h * 0.72;
-      const n = items.length;
-      const start = Math.PI * 0.82;
-      const end = Math.PI * 0.18;
-
-      items.forEach((item, i) => {
-        const t = n === 1 ? 0.5 : i / (n - 1);
-        const theta = start + (end - start) * t;
-        item.style.left = `${cx + rx * Math.cos(theta)}px`;
-        item.style.top = `${ry * Math.sin(theta)}px`;
-      });
+    function isNarrow() {
+      return NARROW_MQ.matches;
     }
 
     function setNavOpen(open) {
-      site.classList.toggle("is-nav-open", open);
-      toggle.setAttribute("aria-expanded", open ? "true" : "false");
-      toggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
-      scrim.hidden = !open;
-      if (open) {
-        layoutOrbitItems();
-        requestAnimationFrame(layoutOrbitItems);
+      // Desktop keeps links visible; only narrow mode uses the drawer
+      const shouldOpen = open && isNarrow();
+      site.classList.toggle("is-nav-open", shouldOpen);
+      if (toggle) {
+        toggle.setAttribute("aria-expanded", shouldOpen ? "true" : "false");
+        toggle.setAttribute("aria-label", shouldOpen ? "Close navigation" : "Open navigation");
       }
+      scrim.hidden = !shouldOpen;
     }
 
     function goLocal(view) {
@@ -76,14 +53,8 @@
       else if (!hash) goLocal("home");
     }
 
-    orbit.addEventListener("transitionend", (e) => {
-      if (e.propertyName === "height" && site.classList.contains("is-nav-open")) {
-        layoutOrbitItems();
-      }
-    });
-
-    toggle.addEventListener("click", (e) => {
-      if (e.target.closest(".orbit__item a") || e.target.closest(".orbit__brand")) return;
+    toggle?.addEventListener("click", (e) => {
+      e.stopPropagation();
       setNavOpen(!site.classList.contains("is-nav-open"));
     });
 
@@ -92,7 +63,10 @@
     document.querySelectorAll("[data-nav]").forEach((el) => {
       el.addEventListener("click", (e) => {
         const view = el.dataset.nav;
-        if (!localNav) return;
+        if (!localNav) {
+          setNavOpen(false);
+          return;
+        }
         if (!VIEWS.includes(view)) return;
         e.preventDefault();
         e.stopPropagation();
@@ -108,16 +82,23 @@
       if (e.key === "Escape") setNavOpen(false);
     });
 
-    window.addEventListener("resize", () => {
+    function onBreakpointChange() {
+      if (!isNarrow()) setNavOpen(false);
       syncFooterHeight();
-      layoutOrbitItems();
-    });
+    }
 
+    if (NARROW_MQ.addEventListener) {
+      NARROW_MQ.addEventListener("change", onBreakpointChange);
+    } else if (NARROW_MQ.addListener) {
+      NARROW_MQ.addListener(onBreakpointChange);
+    }
+
+    window.addEventListener("resize", syncFooterHeight);
     window.addEventListener("hashchange", applyHash);
 
     syncFooterHeight();
     applyHash();
   }
 
-  document.addEventListener("DOMContentLoaded", initOrbit);
+  document.addEventListener("DOMContentLoaded", initNav);
 })();
