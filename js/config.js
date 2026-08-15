@@ -26,7 +26,7 @@ const SITE_CONFIG = {
   bio: {
     intro:
       "I'm a ML researcher working on drug discovery and molecular design. Generally, I'm interested in facilitating the process in which we simulate materials, probe their properties, test them in wet labs, and develop them into useful products.",
-    image: "assets/images/IMG_1064.JPG",
+    image: "assets/images/IMG_1576.JPG",
     imageAlt: "Ron Shprints",
   },
 
